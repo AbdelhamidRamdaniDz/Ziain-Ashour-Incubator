@@ -119,7 +119,7 @@ export default function ForumPage() {
   }))
 
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-6">
         {/* Header */}
         <div className="flex flex-col space-y-4">
@@ -136,12 +136,12 @@ export default function ForumPage() {
 
           {/* Search */}
           <div className="relative max-w-md">
-            <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
             <Input
               placeholder="ابحث في المواضيع..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pr-10"
+              className="pl-10"
             />
           </div>
         </div>
@@ -173,7 +173,12 @@ export default function ForumPage() {
                         <Card key={thread.id} className="hover:shadow-md transition-shadow cursor-pointer">
                           <CardContent className="p-4">
                             <div className="flex items-start justify-between">
-                              <div className="flex-1 space-y-2">
+                              <Avatar className="w-10 h-10">
+                                <AvatarImage src={`/placeholder.svg?height=40&width=40`} />
+                                <AvatarFallback>{thread.author.charAt(0)}</AvatarFallback>
+                              </Avatar>
+                              
+                              <div className="flex-1 space-y-2 mr-4">
                                 <div className="flex items-center gap-2">
                                   {thread.isSticky && (
                                     <Badge variant="secondary" className="bg-[#18A39E]/10 text-[#18A39E]">
@@ -208,11 +213,6 @@ export default function ForumPage() {
                                   ))}
                                 </div>
                               </div>
-
-                              <Avatar className="w-10 h-10">
-                                <AvatarImage src={`/placeholder.svg?height=40&width=40`} />
-                                <AvatarFallback>{thread.author.charAt(0)}</AvatarFallback>
-                              </Avatar>
                             </div>
                           </CardContent>
                         </Card>

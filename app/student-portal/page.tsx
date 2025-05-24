@@ -6,17 +6,17 @@ import { Progress } from "@/components/ui/progress"
 
 export default function StudentPortalPage() {
   return (
-    <div className="container py-6">
+    <div className="container py-6" dir="rtl">
       <div className="mb-8 flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Welcome back, Ahmed!</h1>
-        <p className="text-muted-foreground">"The best way to predict the future is to create it." — Peter Drucker</p>
+        <h1 className="text-3xl font-bold tracking-tight">مرحبًا بعودتك، أحمد!</h1>
+        <p className="text-muted-foreground">"أفضل طريقة للتنبؤ بالمستقبل هي أن تصنعه." — بيتر دراكر</p>
       </div>
 
-      {/* Quick Stats */}
+      {/* الإحصائيات السريعة */}
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Courses Completed</CardTitle>
+            <CardTitle className="text-sm font-medium">الدورات المكتملة</CardTitle>
             <BookOpen className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -26,7 +26,7 @@ export default function StudentPortalPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Tasks Completed</CardTitle>
+            <CardTitle className="text-sm font-medium">المهام المنجزة</CardTitle>
             <Calendar className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
@@ -36,61 +36,61 @@ export default function StudentPortalPage() {
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Unread Messages</CardTitle>
+            <CardTitle className="text-sm font-medium">الرسائل غير المقروءة</CardTitle>
             <MessageSquare className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">3</div>
-            <div className="mt-2 text-xs text-muted-foreground">2 from mentors</div>
+            <div className="mt-2 text-xs text-muted-foreground">2 من المرشدين</div>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Project Status</CardTitle>
+            <CardTitle className="text-sm font-medium">حالة المشروع</CardTitle>
             <Rocket className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-2xl font-bold">Prototype</div>
-            <div className="mt-2 text-xs text-muted-foreground">Next: MVP Development</div>
+            <div className="text-2xl font-bold">نموذج أولي</div>
+            <div className="mt-2 text-xs text-muted-foreground">التالي: تطوير المنتج الأولي (MVP)</div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Quick Links */}
-      <h2 className="mt-8 mb-4 text-xl font-semibold">Quick Links</h2>
+      {/* الروابط السريعة */}
+      <h2 className="mt-8 mb-4 text-xl font-semibold">روابط سريعة</h2>
       <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4">
         <Link href="/student-portal/courses">
           <Button variant="outline" className="h-24 w-full flex-col justify-center gap-2">
             <BookOpen className="h-6 w-6" />
-            <span>Courses</span>
+            <span>الدورات</span>
           </Button>
         </Link>
         <Link href="/student-portal/tasks">
           <Button variant="outline" className="h-24 w-full flex-col justify-center gap-2">
             <Calendar className="h-6 w-6" />
-            <span>Tasks</span>
+            <span>المهام</span>
           </Button>
         </Link>
         <Link href="/student-portal/patent-submission">
           <Button variant="outline" className="h-24 w-full flex-col justify-center gap-2">
             <FileText className="h-6 w-6" />
-            <span>Patent Submission</span>
+            <span>تقديم براءة اختراع</span>
           </Button>
         </Link>
         <Link href="/student-portal/tools">
           <Button variant="outline" className="h-24 w-full flex-col justify-center gap-2">
             <Lightbulb className="h-6 w-6" />
-            <span>Business Tools</span>
+            <span>أدوات الأعمال</span>
           </Button>
         </Link>
       </div>
 
-      {/* Recent Activity and Upcoming Events */}
+      {/* النشاطات الأخيرة والأحداث القادمة */}
       <div className="mt-8 grid gap-4 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>Your latest actions and updates</CardDescription>
+            <CardTitle>النشاطات الأخيرة</CardTitle>
+            <CardDescription>آخر الإجراءات والتحديثات الخاصة بك</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -99,8 +99,8 @@ export default function StudentPortalPage() {
                   <BookOpen className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Completed "Business Model Canvas" course</p>
-                  <p className="text-xs text-muted-foreground">Yesterday at 2:30 PM</p>
+                  <p className="text-sm font-medium">أكملت دورة "نموذج العمل التجاري"</p>
+                  <p className="text-xs text-muted-foreground">أمس الساعة 2:30 مساءً</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -108,8 +108,8 @@ export default function StudentPortalPage() {
                   <FileText className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Updated project description</p>
-                  <p className="text-xs text-muted-foreground">2 days ago at 10:15 AM</p>
+                  <p className="text-sm font-medium">تم تحديث وصف المشروع</p>
+                  <p className="text-xs text-muted-foreground">منذ يومين الساعة 10:15 صباحًا</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -117,22 +117,22 @@ export default function StudentPortalPage() {
                   <MessageSquare className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Received feedback from Prof. Karim</p>
-                  <p className="text-xs text-muted-foreground">3 days ago at 4:45 PM</p>
+                  <p className="text-sm font-medium">تلقيت ملاحظات من البروفيسور كريم</p>
+                  <p className="text-xs text-muted-foreground">منذ 3 أيام الساعة 4:45 مساءً</p>
                 </div>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <Button variant="ghost" size="sm" className="w-full">
-              View All Activity
+              عرض جميع الأنشطة
             </Button>
           </CardFooter>
         </Card>
         <Card>
           <CardHeader>
-            <CardTitle>Upcoming Events</CardTitle>
-            <CardDescription>Workshops, deadlines, and meetings</CardDescription>
+            <CardTitle>الأحداث القادمة</CardTitle>
+            <CardDescription>ورش العمل، المواعيد النهائية، والاجتماعات</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -141,8 +141,8 @@ export default function StudentPortalPage() {
                   <Calendar className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Pitch Practice Workshop</p>
-                  <p className="text-xs text-muted-foreground">Tomorrow at 2:00 PM • Room B12</p>
+                  <p className="text-sm font-medium">ورشة تدريب على العرض التقديمي</p>
+                  <p className="text-xs text-muted-foreground">غدًا الساعة 2:00 مساءً • القاعة B12</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -150,8 +150,8 @@ export default function StudentPortalPage() {
                   <Users className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Mentor Meeting: Dr. Amina</p>
-                  <p className="text-xs text-muted-foreground">May 25, 2025 at 11:30 AM • Online</p>
+                  <p className="text-sm font-medium">اجتماع مع المرشد: د. أمينة</p>
+                  <p className="text-xs text-muted-foreground">25 مايو 2025 الساعة 11:30 صباحًا • عبر الإنترنت</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -159,28 +159,27 @@ export default function StudentPortalPage() {
                   <BarChart3 className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Quarterly Progress Review</p>
-                  <p className="text-xs text-muted-foreground">May 30, 2025 at 10:00 AM • Conference Room</p>
+                  <p className="text-sm font-medium">مراجعة التقدم الفصلية</p>
+                  <p className="text-xs text-muted-foreground">30 مايو 2025 الساعة 10:00 صباحًا • غرفة الاجتماعات</p>
                 </div>
               </div>
             </div>
           </CardContent>
           <CardFooter>
             <Button variant="ghost" size="sm" className="w-full">
-              View Calendar
+              عرض التقويم
             </Button>
           </CardFooter>
         </Card>
       </div>
 
-      {/* Inspiration Quote */}
+      {/* اقتباس ملهم */}
       <Card className="mt-8 bg-primary/5">
         <CardContent className="pt-6">
-          <blockquote className="border-l-4 border-primary pl-4 italic">
-            "The biggest risk is not taking any risk. In a world that is changing quickly, the only strategy that is
-            guaranteed to fail is not taking risks."
+          <blockquote className="border-r-4 border-primary pr-4 italic">
+            "أكبر مخاطرة هي ألا تخاطر. في عالم يتغير بسرعة، الاستراتيجية الوحيدة المضمونة للفشل هي عدم المخاطرة."
           </blockquote>
-          <p className="mt-2 text-right text-sm font-medium">— Mark Zuckerberg</p>
+          <p className="mt-2 text-left text-sm font-medium">— مارك زوكربيرغ</p>
         </CardContent>
       </Card>
     </div>

@@ -32,12 +32,12 @@ export function MainNav() {
       className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
       dir="rtl"
     >
-      <div className="container flex h-16 items-center justify-between">
+      <div className="container flex h-16 items-center justify-between w-full">
         <div className="flex items-center gap-6 md:gap-10">
           {/* Logo Area */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-              <span className="text-sm text-muted-foreground">Logo</span>
+            <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
+              <img src="/faviconV2.png" alt="Logo" className="h-10 w-10 object-contain" />
             </div>
             <span className="text-xl font-bold text-primary">حاضنة</span>
           </Link>
@@ -54,12 +54,12 @@ export function MainNav() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="pl-0" dir="rtl">
-              <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <span className="text-sm text-muted-foreground">Logo</span>
-                </div>
-                <span className="text-xl font-bold text-primary">حاضنة</span>
-              </Link>
+            <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
+                <img src="/faviconV2.png" alt="Logo" className="h-10 w-10 object-contain" />
+              </div>
+              <span className="text-xl font-bold text-primary">حاضنة</span>
+            </Link>
               <div className="mt-8 flex flex-col space-y-4">
                 <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                   الرئيسية
@@ -108,57 +108,65 @@ export function MainNav() {
           </Sheet>
 
           {/* Desktop Menu */}
-          <NavigationMenu className="hidden md:flex">
-            <NavigationMenuList>
-              <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>الرئيسية</NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/about" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>من نحن</NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/news" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأخبار</NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/partners" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>شركاؤنا</NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/contact" legacyBehavior passHref>
-                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>تواصل معنا</NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              {isLoggedIn && (
-                <>
-                  <NavigationMenuItem>
-                    <Link href="/resources/courses" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>الدورات</NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/resources/tools" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأدوات</NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                  <NavigationMenuItem>
-                    <Link href="/mentors" legacyBehavior passHref>
-                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>المرشدون</NavigationMenuLink>
-                    </Link>
-                  </NavigationMenuItem>
-                </>
-              )}
-            </NavigationMenuList>
-          </NavigationMenu>
+        <NavigationMenu  className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
+          style={{ width: 'auto' }}
+        >
+          <NavigationMenuList>
+            {isLoggedIn && (
+              <>
+                <NavigationMenuItem>
+                  <Link href="/mentors" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>المرشدون</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/resources/tools" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأدوات</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/resources/courses" legacyBehavior passHref>
+                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>الدورات</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </>
+            )}
+            <NavigationMenuItem>
+              <Link href="/contact" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>تواصل معنا</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/partners" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>شركاؤنا</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/news" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأخبار</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/about" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>من نحن</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
+              <Link href="/" legacyBehavior passHref>
+                <NavigationMenuLink className={navigationMenuTriggerStyle()}>الرئيسية</NavigationMenuLink>
+              </Link>
+            </NavigationMenuItem>
+          </NavigationMenuList>
+        </NavigationMenu>
+
         </div>
 
         <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2">
+            <Sun className="h-4 w-4" />
+            <Switch checked={theme === "dark"} onCheckedChange={toggleTheme} aria-label="تبديل الوضع المظلم" />
+            <Moon className="h-4 w-4" />
+          </div>
           {/* Auth Buttons */}
           {!isLoggedIn && (
             <div className="hidden md:flex items-center gap-2">
@@ -172,11 +180,6 @@ export function MainNav() {
           )}
 
           {/* Dark Mode Toggle */}
-          <div className="flex items-center gap-2">
-            <Sun className="h-4 w-4" />
-            <Switch checked={theme === "dark"} onCheckedChange={toggleTheme} aria-label="تبديل الوضع المظلم" />
-            <Moon className="h-4 w-4" />
-          </div>
 
           {isLoggedIn && (
             <div className="hidden items-center gap-2 lg:flex">

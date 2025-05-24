@@ -66,7 +66,7 @@ export default function MessagesPage() {
     {
       id: 2,
       name: "أ. فاطمة علي",
-      role: "مستشارة مالية",
+      role: "مستشارة مالية", 
       avatar: "/placeholder.svg?height=40&width=40",
       lastMessage: "هل تحتاج مساعدة في التمويل؟",
       lastMessageTime: "منذ ساعة",
@@ -160,7 +160,7 @@ export default function MessagesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-8rem)]">
           {/* Chat List */}
@@ -173,12 +173,12 @@ export default function MessagesPage() {
                 </Button>
               </div>
               <div className="relative">
-                <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
                 <Input
                   placeholder="ابحث في المحادثات..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pr-10"
+                  className="pl-10"
                 />
               </div>
             </CardHeader>
@@ -189,7 +189,7 @@ export default function MessagesPage() {
                     key={chat.id}
                     onClick={() => setSelectedChat(chat.id)}
                     className={`p-4 cursor-pointer hover:bg-muted/50 transition-colors ${
-                      selectedChat === chat.id ? "bg-[#18A39E]/10 border-r-2 border-[#18A39E]" : ""
+                      selectedChat === chat.id ? "bg-[#18A39E]/10 border-l-2 border-[#18A39E]" : ""
                     }`}
                   >
                     <div className="flex items-start gap-3">
@@ -199,7 +199,7 @@ export default function MessagesPage() {
                           <AvatarFallback>{chat.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         {chat.online && (
-                          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background"></div>
+                          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background"></div>
                         )}
                       </div>
                       <div className="flex-1 min-w-0">
@@ -234,7 +234,7 @@ export default function MessagesPage() {
                           <AvatarFallback>{currentChat.name.charAt(0)}</AvatarFallback>
                         </Avatar>
                         {currentChat.online && (
-                          <div className="absolute -bottom-1 -right-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background"></div>
+                          <div className="absolute -bottom-1 -left-1 w-3 h-3 bg-green-500 rounded-full border-2 border-background"></div>
                         )}
                       </div>
                       <div>
@@ -259,7 +259,7 @@ export default function MessagesPage() {
                 {/* Messages */}
                 <CardContent className="flex-1 overflow-y-auto p-4 space-y-4">
                   {currentChat.messages.map((message) => (
-                    <div key={message.id} className={`flex ${message.isOwn ? "justify-end" : "justify-start"}`}>
+                    <div key={message.id} className={`flex ${message.isOwn ? "justify-start" : "justify-end"}`}>
                       <div
                         className={`max-w-xs lg:max-w-md px-4 py-2 rounded-lg ${
                           message.isOwn ? "bg-[#18A39E] text-white" : "bg-muted text-foreground"

@@ -6,34 +6,50 @@ import { Progress } from "@/components/ui/progress"
 
 export default function CoursesPage() {
   return (
-    <div className="container py-6">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Video Courses Library</h1>
-        <p className="text-muted-foreground">Access specialized courses to develop your entrepreneurial skills</p>
+    <div className="container py-6" dir="rtl">
+      <div className="mb-8 space-y-3">
+        <div className="flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold tracking-tight mb-2">مكتبة الدورات المرئية</h1>
+            <p className="text-muted-foreground text-sm">الوصول إلى دورات متخصصة لتطوير مهاراتك في ريادة الأعمال</p>
+          </div>
+          <div className="flex items-center gap-2">
+            <Button variant="outline" size="sm">
+              <Star className="w-4 h-4 ml-2" />
+              الدورات المميزة
+            </Button>
+            <Button variant="default" size="sm" className="bg-[#18A39E] hover:bg-[#16918A]">
+              <Play className="w-4 h-4 ml-2" />
+              ابدأ التعلم
+            </Button>
+          </div>
+        </div>
+        <Progress value={33} className="h-2 w-full" />
+        <p className="text-xs text-muted-foreground">أكملت 4 من 12 دورة هذا الشهر</p>
       </div>
 
       <Tabs defaultValue="all" className="mb-8">
         <div className="flex items-center justify-between">
-          <TabsList>
-            <TabsTrigger value="all">All Courses</TabsTrigger>
-            <TabsTrigger value="in-progress">In Progress</TabsTrigger>
-            <TabsTrigger value="completed">Completed</TabsTrigger>
-            <TabsTrigger value="recommended">Recommended</TabsTrigger>
-          </TabsList>
           <div className="flex items-center gap-2">
             <select className="rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background">
-              <option>All Categories</option>
-              <option>Business</option>
-              <option>Marketing</option>
-              <option>Finance</option>
-              <option>Technology</option>
+              <option>ترتيب حسب: الأحدث</option>
+              <option>ترتيب حسب: الأقدم</option>
+              <option>ترتيب حسب: الأكثر شعبية</option>
             </select>
             <select className="rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background">
-              <option>Sort by: Newest</option>
-              <option>Sort by: Oldest</option>
-              <option>Sort by: Popular</option>
+              <option>جميع الفئات</option>
+              <option>الأعمال</option>
+              <option>التسويق</option>
+              <option>المالية</option>
+              <option>التكنولوجيا</option>
             </select>
           </div>
+          <TabsList>
+            <TabsTrigger value="recommended">موصى بها</TabsTrigger>
+            <TabsTrigger value="completed">مكتملة</TabsTrigger>
+            <TabsTrigger value="in-progress">قيد التقدم</TabsTrigger>
+            <TabsTrigger value="all">جميع الدورات</TabsTrigger>
+          </TabsList>
         </div>
 
         <TabsContent value="all" className="mt-6">
@@ -53,28 +69,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Business
+                    الأعمال
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.8</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Business Model Canvas Masterclass</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">دورة متقدمة في نموذج العمل التجاري</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to create and analyze a business model canvas for your startup.
+                  تعلم كيفية إنشاء وتحليل نموذج العمل التجاري لشركتك الناشئة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>3h 45m</span>
+                    <span>3 ساعات و 45 دقيقة</span>
                   </div>
-                  <span>12 lessons</span>
+                  <span>12 درس</span>
                 </div>
                 <Progress value={75} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Continue Learning</Button>
+                <Button className="w-full">متابعة التعلم</Button>
               </CardFooter>
             </Card>
 
@@ -93,28 +109,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Marketing
+                    التسويق
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.6</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Digital Marketing for Startups</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">التسويق الرقمي للشركات الناشئة</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Discover effective digital marketing strategies for early-stage startups with limited budgets.
+                  اكتشف استراتيجيات التسويق الرقمي الفعالة للشركات الناشئة ذات الميزانيات المحدودة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>4h 20m</span>
+                    <span>4 ساعات و 20 دقيقة</span>
                   </div>
-                  <span>15 lessons</span>
+                  <span>15 درس</span>
                 </div>
                 <Progress value={30} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Continue Learning</Button>
+                <Button className="w-full">متابعة التعلم</Button>
               </CardFooter>
             </Card>
 
@@ -133,28 +149,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Finance
+                    المالية
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.9</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Startup Financial Planning</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">التخطيط المالي للشركات الناشئة</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to create financial projections, manage cash flow, and prepare for investor meetings.
+                  تعلم كيفية إنشاء التوقعات المالية، وإدارة التدفق النقدي، والتحضير لاجتماعات المستثمرين.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>5h 15m</span>
+                    <span>5 ساعات و 15 دقيقة</span>
                   </div>
-                  <span>18 lessons</span>
+                  <span>18 درس</span>
                 </div>
                 <Progress value={0} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Start Course</Button>
+                <Button className="w-full">ابدأ الدورة</Button>
               </CardFooter>
             </Card>
 
@@ -173,29 +189,29 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Legal
+                    قانوني
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.7</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Intellectual Property for Startups</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">الملكية الفكرية للشركات الناشئة</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Understand patents, trademarks, and copyrights to protect your startup's innovations.
+                  فهم براءات الاختراع والعلامات التجارية وحقوق النشر لحماية ابتكارات شركتك الناشئة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>3h 30m</span>
+                    <span>3 ساعات و 30 دقيقة</span>
                   </div>
-                  <span>10 lessons</span>
+                  <span>10 دروس</span>
                 </div>
                 <Progress value={100} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
                 <Button className="w-full" variant="outline">
-                  View Certificate
+                  عرض الشهادة
                 </Button>
               </CardFooter>
             </Card>
@@ -215,29 +231,29 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Pitching
+                    العرض التقديمي
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.9</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Perfect Pitch: Presenting to Investors</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">العرض المثالي: التقديم للمستثمرين</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to create and deliver compelling investor pitches that get results.
+                  تعلم كيفية إنشاء وتقديم عروض مقنعة للمستثمرين تحقق النتائج.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>4h 10m</span>
+                    <span>4 ساعات و 10 دقائق</span>
                   </div>
-                  <span>14 lessons</span>
+                  <span>14 درس</span>
                 </div>
                 <Progress value={100} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
                 <Button className="w-full" variant="outline">
-                  View Certificate
+                  عرض الشهادة
                 </Button>
               </CardFooter>
             </Card>
@@ -257,28 +273,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Technology
+                    التكنولوجيا
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.8</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">MVP Development Strategies</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">استراتيجيات تطوير المنتج الأولي</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to build a minimum viable product that validates your business idea efficiently.
+                  تعلم كيفية بناء منتج أولي يثبت فكرة عملك بكفاءة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>6h 20m</span>
+                    <span>6 ساعات و 20 دقيقة</span>
                   </div>
-                  <span>20 lessons</span>
+                  <span>20 درس</span>
                 </div>
                 <Progress value={50} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Continue Learning</Button>
+                <Button className="w-full">متابعة التعلم</Button>
               </CardFooter>
             </Card>
           </div>
@@ -301,28 +317,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Business
+                    الأعمال
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.8</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Business Model Canvas Masterclass</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">دورة متقدمة في نموذج العمل التجاري</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to create and analyze a business model canvas for your startup.
+                  تعلم كيفية إنشاء وتحليل نموذج العمل التجاري لشركتك الناشئة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>3h 45m</span>
+                    <span>3 ساعات و 45 دقيقة</span>
                   </div>
-                  <span>12 lessons</span>
+                  <span>12 درس</span>
                 </div>
                 <Progress value={75} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Continue Learning</Button>
+                <Button className="w-full">متابعة التعلم</Button>
               </CardFooter>
             </Card>
             {/* Add more in-progress courses */}
@@ -346,29 +362,29 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Legal
+                    قانوني
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.7</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Intellectual Property for Startups</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">الملكية الفكرية للشركات الناشئة</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Understand patents, trademarks, and copyrights to protect your startup's innovations.
+                  فهم براءات الاختراع والعلامات التجارية وحقوق النشر لحماية ابتكارات شركتك الناشئة.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>3h 30m</span>
+                    <span>3 ساعات و 30 دقيقة</span>
                   </div>
-                  <span>10 lessons</span>
+                  <span>10 دروس</span>
                 </div>
                 <Progress value={100} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
                 <Button className="w-full" variant="outline">
-                  View Certificate
+                  عرض الشهادة
                 </Button>
               </CardFooter>
             </Card>
@@ -393,28 +409,28 @@ export default function CoursesPage() {
               <CardContent className="p-6">
                 <div className="mb-3 flex items-center justify-between">
                   <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-xs font-medium text-primary">
-                    Finance
+                    المالية
                   </span>
                   <div className="flex items-center gap-1">
                     <Star className="h-3.5 w-3.5 fill-primary text-primary" />
                     <span className="text-xs font-medium">4.9</span>
                   </div>
                 </div>
-                <CardTitle className="mb-2 line-clamp-1">Startup Financial Planning</CardTitle>
+                <CardTitle className="mb-2 line-clamp-1">التخطيط المالي للشركات الناشئة</CardTitle>
                 <CardDescription className="line-clamp-2 mb-3">
-                  Learn how to create financial projections, manage cash flow, and prepare for investor meetings.
+                  تعلم كيفية إنشاء التوقعات المالية، وإدارة التدفق النقدي، والتحضير لاجتماعات المستثمرين.
                 </CardDescription>
                 <div className="flex items-center justify-between text-xs text-muted-foreground">
                   <div className="flex items-center gap-1">
                     <Clock className="h-3.5 w-3.5" />
-                    <span>5h 15m</span>
+                    <span>5 ساعات و 15 دقيقة</span>
                   </div>
-                  <span>18 lessons</span>
+                  <span>18 درس</span>
                 </div>
                 <Progress value={0} className="mt-3 h-1.5" />
               </CardContent>
               <CardFooter className="px-6 pb-6 pt-0">
-                <Button className="w-full">Start Course</Button>
+                <Button className="w-full">ابدأ الدورة</Button>
               </CardFooter>
             </Card>
             {/* Add more recommended courses */}

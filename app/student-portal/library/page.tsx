@@ -18,12 +18,12 @@ export default function DigitalLibraryPage() {
   const libraryResources = [
     {
       id: 1,
-      title: "The Lean Startup",
-      author: "Eric Ries",
-      type: "Book",
-      category: "Business",
+      title: "بدء التشغيل الرشيق",
+      author: "إريك ريس",
+      type: "كتاب",
+      category: "أعمال",
       description:
-        "A methodology for developing businesses and products that aims to shorten product development cycles.",
+        "منهجية لتطوير الأعمال والمنتجات تهدف إلى تقصير دورات تطوير المنتجات.",
       rating: 4.8,
       downloads: 1250,
       pages: 336,
@@ -33,12 +33,12 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 2,
-      title: "Zero to One",
-      author: "Peter Thiel",
-      type: "Book",
-      category: "Business",
+      title: "من الصفر إلى واحد",
+      author: "بيتر ثيل",
+      type: "كتاب",
+      category: "أعمال",
       description:
-        "Notes on startups, or how to build the future. A guide to creating monopolies and building successful companies.",
+        "ملاحظات حول الشركات الناشئة، أو كيفية بناء المستقبل. دليل لإنشاء الاحتكارات وبناء الشركات الناجحة.",
       rating: 4.6,
       downloads: 980,
       pages: 224,
@@ -48,11 +48,11 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 3,
-      title: "Design Thinking Process",
+      title: "عملية التفكير التصميمي",
       author: "IDEO",
-      type: "Research Paper",
-      category: "Design",
-      description: "Comprehensive guide to the design thinking methodology and its application in innovation.",
+      type: "ورقة بحثية",
+      category: "تصميم",
+      description: "دليل شامل لمنهجية التفكير التصميمي وتطبيقها في الابتكار.",
       rating: 4.7,
       downloads: 756,
       pages: 45,
@@ -62,11 +62,11 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 4,
-      title: "Artificial Intelligence: A Modern Approach",
-      author: "Stuart Russell, Peter Norvig",
-      type: "Textbook",
-      category: "Technology",
-      description: "The leading textbook in Artificial Intelligence, used in over 1400 universities worldwide.",
+      title: "الذكاء الاصطناعي: نهج حديث",
+      author: "ستيوارت راسل، بيتر نورفيج",
+      type: "كتاب دراسي",
+      category: "تكنولوجيا",
+      description: "الكتاب الرائد في الذكاء الاصطناعي، يستخدم في أكثر من 1400 جامعة حول العالم.",
       rating: 4.9,
       downloads: 2100,
       pages: 1152,
@@ -76,11 +76,11 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 5,
-      title: "Blockchain Technology Fundamentals",
-      author: "Various Authors",
-      type: "Research Paper",
-      category: "Technology",
-      description: "Collection of research papers on blockchain technology and its applications in various industries.",
+      title: "أساسيات تقنية البلوكتشين",
+      author: "مؤلفون متعددون",
+      type: "ورقة بحثية",
+      category: "تكنولوجيا",
+      description: "مجموعة من الأوراق البحثية حول تقنية البلوكتشين وتطبيقاتها في مختلف الصناعات.",
       rating: 4.5,
       downloads: 634,
       pages: 78,
@@ -90,11 +90,11 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 6,
-      title: "Financial Modeling for Startups",
-      author: "Financial Institute",
-      type: "Guide",
-      category: "Finance",
-      description: "Step-by-step guide to creating financial models and projections for startup businesses.",
+      title: "النمذجة المالية للشركات الناشئة",
+      author: "المعهد المالي",
+      type: "دليل",
+      category: "مالية",
+      description: "دليل خطوة بخطوة لإنشاء النماذج المالية والتوقعات للشركات الناشئة.",
       rating: 4.4,
       downloads: 892,
       pages: 156,
@@ -104,11 +104,11 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 7,
-      title: "Marketing in the Digital Age",
-      author: "Marketing Experts",
-      type: "Book",
-      category: "Marketing",
-      description: "Comprehensive guide to digital marketing strategies for modern businesses and startups.",
+      title: "التسويق في العصر الرقمي",
+      author: "خبراء التسويق",
+      type: "كتاب",
+      category: "تسويق",
+      description: "دليل شامل لاستراتيجيات التسويق الرقمي للشركات الحديثة والناشئة.",
       rating: 4.3,
       downloads: 567,
       pages: 289,
@@ -118,12 +118,12 @@ export default function DigitalLibraryPage() {
     },
     {
       id: 8,
-      title: "Intellectual Property Law for Innovators",
-      author: "Legal Experts",
-      type: "Guide",
-      category: "Legal",
+      title: "قانون الملكية الفكرية للمبتكرين",
+      author: "خبراء قانونيون",
+      type: "دليل",
+      category: "قانوني",
       description:
-        "Essential guide to understanding and protecting intellectual property for inventors and entrepreneurs.",
+        "دليل أساسي لفهم وحماية الملكية الفكرية للمخترعين ورواد الأعمال.",
       rating: 4.6,
       downloads: 423,
       pages: 198,
@@ -148,13 +148,13 @@ export default function DigitalLibraryPage() {
 
   const getTypeColor = (type: string) => {
     switch (type) {
-      case "Book":
+      case "كتاب":
         return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
-      case "Research Paper":
+      case "ورقة بحثية":
         return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
-      case "Textbook":
+      case "كتاب دراسي":
         return "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-300"
-      case "Guide":
+      case "دليل":
         return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300"
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300"
@@ -162,61 +162,61 @@ export default function DigitalLibraryPage() {
   }
 
   return (
-    <div className="container py-6">
+    <div className="container py-6" dir="rtl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Digital Library</h1>
+        <h1 className="text-3xl font-bold tracking-tight">المكتبة الرقمية</h1>
         <p className="text-muted-foreground">
-          Access our comprehensive collection of books, research papers, and resources
+          الوصول إلى مجموعتنا الشاملة من الكتب والأوراق البحثية والموارد
         </p>
       </div>
 
       <Tabs defaultValue="browse" className="space-y-6">
-        <TabsList>
-          <TabsTrigger value="browse">Browse Library</TabsTrigger>
-          <TabsTrigger value="favorites">My Favorites</TabsTrigger>
-          <TabsTrigger value="recent">Recently Viewed</TabsTrigger>
+        <TabsList className="grid w-full grid-cols-3">
+          <TabsTrigger value="browse">تصفح المكتبة</TabsTrigger>
+          <TabsTrigger value="favorites">المفضلة</TabsTrigger>
+          <TabsTrigger value="recent">تمت مشاهدته مؤخراً</TabsTrigger>
         </TabsList>
 
         <TabsContent value="browse" className="space-y-6">
           {/* Search and Filter */}
-          <div className="flex flex-col gap-4 md:flex-row md:items-center">
+          <div className="flex flex-col gap-4 md:flex-row md:items-center justify-end">
+            <div className="flex gap-2 justify-end">
+              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                <SelectTrigger className="w-[140px] text-right">
+                  <SelectValue placeholder="التصنيف" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all" className="text-right">جميع التصنيفات</SelectItem>
+                  <SelectItem value="أعمال" className="text-right">أعمال</SelectItem>
+                  <SelectItem value="تكنولوجيا" className="text-right">تكنولوجيا</SelectItem>
+                  <SelectItem value="تصميم" className="text-right">تصميم</SelectItem>
+                  <SelectItem value="مالية" className="text-right">مالية</SelectItem>
+                  <SelectItem value="تسويق" className="text-right">تسويق</SelectItem>
+                  <SelectItem value="قانوني" className="text-right">قانوني</SelectItem>
+                </SelectContent>
+              </Select>
+              <Select value={typeFilter} onValueChange={setTypeFilter}>
+                <SelectTrigger className="w-[120px] text-right">
+                  <SelectValue placeholder="النوع" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="all" className="text-right">جميع الأنواع</SelectItem>
+                  <SelectItem value="كتاب" className="text-right">كتب</SelectItem>
+                  <SelectItem value="ورقة بحثية" className="text-right">أوراق بحثية</SelectItem>
+                  <SelectItem value="كتاب دراسي" className="text-right">كتب دراسية</SelectItem>
+                  <SelectItem value="دليل" className="text-right">أدلة</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
             <div className="relative flex-1 max-w-md">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder="Search library..."
+                placeholder="البحث في المكتبة..."
                 className="pl-8"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
-            </div>
-            <div className="flex gap-2">
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="Business">Business</SelectItem>
-                  <SelectItem value="Technology">Technology</SelectItem>
-                  <SelectItem value="Design">Design</SelectItem>
-                  <SelectItem value="Finance">Finance</SelectItem>
-                  <SelectItem value="Marketing">Marketing</SelectItem>
-                  <SelectItem value="Legal">Legal</SelectItem>
-                </SelectContent>
-              </Select>
-              <Select value={typeFilter} onValueChange={setTypeFilter}>
-                <SelectTrigger className="w-[120px]">
-                  <SelectValue placeholder="Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Types</SelectItem>
-                  <SelectItem value="Book">Books</SelectItem>
-                  <SelectItem value="Research Paper">Papers</SelectItem>
-                  <SelectItem value="Textbook">Textbooks</SelectItem>
-                  <SelectItem value="Guide">Guides</SelectItem>
-                </SelectContent>
-              </Select>
             </div>
           </div>
 
@@ -235,30 +235,30 @@ export default function DigitalLibraryPage() {
                 </CardHeader>
                 <CardContent className="p-4">
                   <div className="mb-2 flex items-start justify-between">
+                    <div className="flex items-center gap-1">
+                      <span className="text-xs font-medium">{resource.rating}</span>
+                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
+                    </div>
                     <Badge variant="outline" className={getTypeColor(resource.type)}>
                       {resource.type}
                     </Badge>
-                    <div className="flex items-center gap-1">
-                      <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
-                      <span className="text-xs font-medium">{resource.rating}</span>
-                    </div>
                   </div>
-                  <h3 className="font-semibold line-clamp-2 mb-1">{resource.title}</h3>
-                  <p className="text-sm text-muted-foreground mb-2">{resource.author}</p>
-                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3">{resource.description}</p>
+                  <h3 className="font-semibold line-clamp-2 mb-1 text-right">{resource.title}</h3>
+                  <p className="text-sm text-muted-foreground mb-2 text-right">{resource.author}</p>
+                  <p className="text-xs text-muted-foreground line-clamp-2 mb-3 text-right">{resource.description}</p>
                   <div className="flex items-center justify-between text-xs text-muted-foreground">
-                    <span>{resource.pages} pages</span>
                     <span>{resource.size}</span>
+                    <span>{resource.pages} صفحة</span>
                   </div>
                 </CardContent>
                 <CardFooter className="p-4 pt-0 flex gap-2">
-                  <Button variant="outline" size="sm" className="flex-1 gap-1">
-                    <Eye className="h-3 w-3" />
-                    Preview
-                  </Button>
                   <Button size="sm" className="flex-1 gap-1">
                     <Download className="h-3 w-3" />
-                    Download
+                    تحميل
+                  </Button>
+                  <Button variant="outline" size="sm" className="flex-1 gap-1">
+                    <Eye className="h-3 w-3" />
+                    معاينة
                   </Button>
                 </CardFooter>
               </Card>
@@ -269,18 +269,18 @@ export default function DigitalLibraryPage() {
         <TabsContent value="favorites" className="space-y-6">
           <div className="text-center py-12">
             <BookOpen className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No favorites yet</h3>
-            <p className="text-muted-foreground mb-4">Start adding resources to your favorites to see them here</p>
-            <Button variant="outline">Browse Library</Button>
+            <h3 className="text-lg font-semibold mb-2">لا توجد مفضلات حتى الآن</h3>
+            <p className="text-muted-foreground mb-4">ابدأ بإضافة موارد إلى مفضلاتك لتراها هنا</p>
+            <Button variant="outline">تصفح المكتبة</Button>
           </div>
         </TabsContent>
 
         <TabsContent value="recent" className="space-y-6">
           <div className="text-center py-12">
             <Book className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No recent activity</h3>
-            <p className="text-muted-foreground mb-4">Resources you view will appear here for quick access</p>
-            <Button variant="outline">Browse Library</Button>
+            <h3 className="text-lg font-semibold mb-2">لا يوجد نشاط حديث</h3>
+            <p className="text-muted-foreground mb-4">الموارد التي تشاهدها ستظهر هنا للوصول السريع</p>
+            <Button variant="outline">تصفح المكتبة</Button>
           </div>
         </TabsContent>
       </Tabs>

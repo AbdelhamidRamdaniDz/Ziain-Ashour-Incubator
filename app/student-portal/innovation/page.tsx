@@ -30,91 +30,91 @@ export default function InnovationHubPage() {
   const innovationIdeas = [
     {
       id: 1,
-      title: "Smart Campus Navigation System",
+      title: "نظام التنقل الذكي في الحرم الجامعي",
       description:
-        "An AR-based navigation system to help students and visitors navigate the university campus more efficiently.",
-      author: "Ahmed Khalid",
+        "نظام تنقل قائم على الواقع المعزز لمساعدة الطلاب والزوار على التنقل في الحرم الجامعي بكفاءة أكبر.",
+      author: "أحمد خالد",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Technology",
-      stage: "Concept",
+      category: "تكنولوجيا",
+      stage: "فكرة",
       likes: 24,
       comments: 8,
       collaborators: 3,
-      postedDate: "2 days ago",
-      tags: ["AR", "Mobile App", "Navigation"],
+      postedDate: "منذ يومين",
+      tags: ["واقع معزز", "تطبيق جوال", "تنقل"],
     },
     {
       id: 2,
-      title: "Sustainable Food Packaging Solution",
-      description: "Biodegradable packaging made from agricultural waste to reduce plastic pollution in food industry.",
-      author: "Fatima Benali",
+      title: "حل تغليف الطعام المستدام",
+      description: "تغليف قابل للتحلل مصنوع من النفايات الزراعية للحد من التلوث البلاستيكي في صناعة الأغذية.",
+      author: "فاطمة بن علي",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Sustainability",
-      stage: "Research",
+      category: "الاستدامة",
+      stage: "بحث",
       likes: 31,
       comments: 12,
       collaborators: 5,
-      postedDate: "1 week ago",
-      tags: ["Sustainability", "Packaging", "Environment"],
+      postedDate: "منذ أسبوع",
+      tags: ["استدامة", "تغليف", "بيئة"],
     },
     {
       id: 3,
-      title: "AI-Powered Study Assistant",
+      title: "مساعد دراسة بالذكاء الاصطناعي",
       description:
-        "Personalized learning platform that adapts to individual student learning patterns and preferences.",
-      author: "Omar Mansouri",
+        "منصة تعلم مخصصة تتكيف مع أنماط وتفضيلات التعلم الفردية للطلاب.",
+      author: "عمر منصوري",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Education",
-      stage: "Prototype",
+      category: "تعليم",
+      stage: "نموذج أولي",
       likes: 45,
       comments: 18,
       collaborators: 7,
-      postedDate: "3 days ago",
-      tags: ["AI", "Education", "Machine Learning"],
+      postedDate: "منذ 3 أيام",
+      tags: ["ذكاء اصطناعي", "تعليم", "تعلم آلي"],
     },
     {
       id: 4,
-      title: "Telemedicine Platform for Rural Areas",
+      title: "منصة الطب عن بعد للمناطق الريفية",
       description:
-        "Mobile health platform connecting rural patients with healthcare professionals through video consultations.",
-      author: "Leila Amrani",
+        "منصة صحة متنقلة تربط المرضى في المناطق الريفية مع المتخصصين في الرعاية الصحية من خلال استشارات الفيديو.",
+      author: "ليلى عمراني",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Healthcare",
-      stage: "Development",
+      category: "رعاية صحية",
+      stage: "تطوير",
       likes: 38,
       comments: 15,
       collaborators: 4,
-      postedDate: "5 days ago",
-      tags: ["Healthcare", "Telemedicine", "Mobile"],
+      postedDate: "منذ 5 أيام",
+      tags: ["رعاية صحية", "طب عن بعد", "جوال"],
     },
     {
       id: 5,
-      title: "Blockchain-Based Voting System",
-      description: "Secure and transparent voting system using blockchain technology for student government elections.",
-      author: "Karim Bouazizi",
+      title: "نظام تصويت قائم على البلوكتشين",
+      description: "نظام تصويت آمن وشفاف باستخدام تقنية البلوكتشين لانتخابات مجلس الطلاب.",
+      author: "كريم بوعزيزي",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Technology",
-      stage: "Concept",
+      category: "تكنولوجيا",
+      stage: "فكرة",
       likes: 22,
       comments: 9,
       collaborators: 2,
-      postedDate: "1 week ago",
-      tags: ["Blockchain", "Security", "Voting"],
+      postedDate: "منذ أسبوع",
+      tags: ["بلوكتشين", "أمان", "تصويت"],
     },
     {
       id: 6,
-      title: "Smart Water Management System",
+      title: "نظام إدارة المياه الذكي",
       description:
-        "IoT-based system for monitoring and optimizing water usage in university buildings and dormitories.",
-      author: "Yasmine Tazi",
+        "نظام قائم على إنترنت الأشياء لمراقبة وتحسين استخدام المياه في المباني الجامعية والمساكن الطلابية.",
+      author: "ياسمين التازي",
       authorAvatar: "/placeholder.svg?height=40&width=40",
-      category: "Sustainability",
-      stage: "Research",
+      category: "الاستدامة",
+      stage: "بحث",
       likes: 29,
       comments: 11,
       collaborators: 6,
-      postedDate: "4 days ago",
-      tags: ["IoT", "Water Management", "Smart City"],
+      postedDate: "منذ 4 أيام",
+      tags: ["إنترنت الأشياء", "إدارة المياه", "مدينة ذكية"],
     },
   ]
 
@@ -132,13 +132,13 @@ export default function InnovationHubPage() {
 
   const getStageColor = (stage: string) => {
     switch (stage) {
-      case "Concept":
+      case "فكرة":
         return "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-300"
-      case "Research":
+      case "بحث":
         return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300"
-      case "Prototype":
+      case "نموذج أولي":
         return "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-300"
-      case "Development":
+      case "تطوير":
         return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300"
       default:
         return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300"
@@ -146,28 +146,28 @@ export default function InnovationHubPage() {
   }
 
   return (
-    <div className="container py-6">
+    <div className="container py-6" dir="rtl">
       <div className="mb-8">
-        <h1 className="text-3xl font-bold tracking-tight">Innovation Hub</h1>
-        <p className="text-muted-foreground">Share ideas, collaborate with peers, and turn concepts into reality</p>
+        <h1 className="text-3xl font-bold tracking-tight">مركز الابتكار</h1>
+        <p className="text-muted-foreground">شارك الأفكار، تعاون مع زملائك، وحول المفاهيم إلى واقع</p>
       </div>
 
       <Tabs defaultValue="explore" className="space-y-6">
         <TabsList>
-          <TabsTrigger value="explore">Explore Ideas</TabsTrigger>
-          <TabsTrigger value="my-ideas">My Ideas</TabsTrigger>
-          <TabsTrigger value="collaborations">Collaborations</TabsTrigger>
+          <TabsTrigger value="explore">استكشاف الأفكار</TabsTrigger>
+          <TabsTrigger value="my-ideas">أفكاري</TabsTrigger>
+          <TabsTrigger value="collaborations">التعاون</TabsTrigger>
         </TabsList>
 
         <TabsContent value="explore" className="space-y-6">
           {/* Search and Filter */}
           <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+              <Search className="absolute right-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
-                placeholder="Search ideas..."
-                className="pl-8"
+                placeholder="ابحث عن الأفكار..."
+                className="pr-8"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
@@ -175,79 +175,79 @@ export default function InnovationHubPage() {
             <div className="flex gap-2">
               <Select value={categoryFilter} onValueChange={setCategoryFilter}>
                 <SelectTrigger className="w-[140px]">
-                  <SelectValue placeholder="Category" />
+                  <SelectValue placeholder="التصنيف" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Categories</SelectItem>
-                  <SelectItem value="Technology">Technology</SelectItem>
-                  <SelectItem value="Healthcare">Healthcare</SelectItem>
-                  <SelectItem value="Education">Education</SelectItem>
-                  <SelectItem value="Sustainability">Sustainability</SelectItem>
-                  <SelectItem value="Finance">Finance</SelectItem>
+                  <SelectItem value="all">جميع التصنيفات</SelectItem>
+                  <SelectItem value="تكنولوجيا">تكنولوجيا</SelectItem>
+                  <SelectItem value="رعاية صحية">رعاية صحية</SelectItem>
+                  <SelectItem value="تعليم">تعليم</SelectItem>
+                  <SelectItem value="الاستدامة">الاستدامة</SelectItem>
+                  <SelectItem value="مالية">مالية</SelectItem>
                 </SelectContent>
               </Select>
               <Dialog open={isIdeaDialogOpen} onOpenChange={setIsIdeaDialogOpen}>
                 <DialogTrigger asChild>
                   <Button className="gap-2">
                     <Plus className="h-4 w-4" />
-                    Share Idea
+                    شارك فكرة
                   </Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-[500px]">
                   <DialogHeader>
-                    <DialogTitle>Share Your Innovation Idea</DialogTitle>
-                    <DialogDescription>Share your idea with the community and find collaborators</DialogDescription>
+                    <DialogTitle>شارك فكرة الابتكار الخاصة بك</DialogTitle>
+                    <DialogDescription>شارك فكرتك مع المجتمع وابحث عن متعاونين</DialogDescription>
                   </DialogHeader>
                   <div className="grid gap-4 py-4">
                     <div className="space-y-2">
-                      <Label htmlFor="title">Idea Title</Label>
-                      <Input id="title" placeholder="Enter a catchy title for your idea" />
+                      <Label htmlFor="title">عنوان الفكرة</Label>
+                      <Input id="title" placeholder="أدخل عنواناً جذاباً لفكرتك" />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="category">Category</Label>
+                      <Label htmlFor="category">التصنيف</Label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select category" />
+                          <SelectValue placeholder="اختر التصنيف" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="technology">Technology</SelectItem>
-                          <SelectItem value="healthcare">Healthcare</SelectItem>
-                          <SelectItem value="education">Education</SelectItem>
-                          <SelectItem value="sustainability">Sustainability</SelectItem>
-                          <SelectItem value="finance">Finance</SelectItem>
+                          <SelectItem value="technology">تكنولوجيا</SelectItem>
+                          <SelectItem value="healthcare">رعاية صحية</SelectItem>
+                          <SelectItem value="education">تعليم</SelectItem>
+                          <SelectItem value="sustainability">الاستدامة</SelectItem>
+                          <SelectItem value="finance">مالية</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="stage">Development Stage</Label>
+                      <Label htmlFor="stage">مرحلة التطوير</Label>
                       <Select>
                         <SelectTrigger>
-                          <SelectValue placeholder="Select stage" />
+                          <SelectValue placeholder="اختر المرحلة" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="concept">Concept</SelectItem>
-                          <SelectItem value="research">Research</SelectItem>
-                          <SelectItem value="prototype">Prototype</SelectItem>
-                          <SelectItem value="development">Development</SelectItem>
+                          <SelectItem value="concept">فكرة</SelectItem>
+                          <SelectItem value="research">بحث</SelectItem>
+                          <SelectItem value="prototype">نموذج أولي</SelectItem>
+                          <SelectItem value="development">تطوير</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="description">Description</Label>
+                      <Label htmlFor="description">الوصف</Label>
                       <Textarea
                         id="description"
-                        placeholder="Describe your idea, its purpose, and potential impact"
+                        placeholder="صف فكرتك، هدفها، وتأثيرها المحتمل"
                         rows={4}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="tags">Tags</Label>
-                      <Input id="tags" placeholder="Add tags separated by commas (e.g., AI, Mobile, Healthcare)" />
+                      <Label htmlFor="tags">الوسوم</Label>
+                      <Input id="tags" placeholder="أضف وسوماً مفصولة بفواصل (مثال: ذكاء اصطناعي، جوال، رعاية صحية)" />
                     </div>
                   </div>
                   <DialogFooter>
                     <Button type="submit" onClick={() => setIsIdeaDialogOpen(false)}>
-                      Share Idea
+                      شارك الفكرة
                     </Button>
                   </DialogFooter>
                 </DialogContent>
@@ -261,7 +261,14 @@ export default function InnovationHubPage() {
               <Card key={idea.id}>
                 <CardHeader>
                   <div className="flex items-start justify-between">
+                    <Badge variant="outline" className={getStageColor(idea.stage)}>
+                      {idea.stage}
+                    </Badge>
                     <div className="flex items-center gap-3">
+                      <div>
+                        <p className="font-medium">{idea.author}</p>
+                        <p className="text-xs text-muted-foreground">{idea.postedDate}</p>
+                      </div>
                       <Avatar className="h-10 w-10">
                         <AvatarImage src={idea.authorAvatar || "/placeholder.svg"} alt={idea.author} />
                         <AvatarFallback>
@@ -271,14 +278,7 @@ export default function InnovationHubPage() {
                             .join("")}
                         </AvatarFallback>
                       </Avatar>
-                      <div>
-                        <p className="font-medium">{idea.author}</p>
-                        <p className="text-xs text-muted-foreground">{idea.postedDate}</p>
-                      </div>
                     </div>
-                    <Badge variant="outline" className={getStageColor(idea.stage)}>
-                      {idea.stage}
-                    </Badge>
                   </div>
                   <CardTitle className="line-clamp-2">{idea.title}</CardTitle>
                   <CardDescription className="line-clamp-3">{idea.description}</CardDescription>
@@ -292,31 +292,31 @@ export default function InnovationHubPage() {
                     ))}
                   </div>
                   <div className="flex items-center justify-between text-sm text-muted-foreground">
+                    <Badge variant="outline">{idea.category}</Badge>
                     <div className="flex items-center gap-4">
                       <div className="flex items-center gap-1">
-                        <ThumbsUp className="h-4 w-4" />
                         <span>{idea.likes}</span>
+                        <ThumbsUp className="h-4 w-4" />
                       </div>
                       <div className="flex items-center gap-1">
-                        <MessageSquare className="h-4 w-4" />
                         <span>{idea.comments}</span>
+                        <MessageSquare className="h-4 w-4" />
                       </div>
                       <div className="flex items-center gap-1">
-                        <Users className="h-4 w-4" />
                         <span>{idea.collaborators}</span>
+                        <Users className="h-4 w-4" />
                       </div>
                     </div>
-                    <Badge variant="outline">{idea.category}</Badge>
                   </div>
                 </CardContent>
                 <CardFooter className="flex gap-2">
-                  <Button variant="outline" size="sm" className="flex-1 gap-1">
-                    <Eye className="h-4 w-4" />
-                    View Details
-                  </Button>
                   <Button size="sm" className="flex-1 gap-1">
                     <Users className="h-4 w-4" />
-                    Collaborate
+                    تعاون
+                  </Button>
+                  <Button variant="outline" size="sm" className="flex-1 gap-1">
+                    <Eye className="h-4 w-4" />
+                    عرض التفاصيل
                   </Button>
                 </CardFooter>
               </Card>
@@ -326,29 +326,29 @@ export default function InnovationHubPage() {
 
         <TabsContent value="my-ideas" className="space-y-6">
           <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">My Innovation Ideas</h2>
             <Button className="gap-2" onClick={() => setIsIdeaDialogOpen(true)}>
               <Plus className="h-4 w-4" />
-              Share New Idea
+              شارك فكرة جديدة
             </Button>
+            <h2 className="text-xl font-semibold">أفكار الابتكار الخاصة بي</h2>
           </div>
 
           <div className="text-center py-12">
             <Lightbulb className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No ideas shared yet</h3>
-            <p className="text-muted-foreground mb-4">Share your first innovation idea with the community</p>
-            <Button onClick={() => setIsIdeaDialogOpen(true)}>Share Your First Idea</Button>
+            <h3 className="text-lg font-semibold mb-2">لم تتم مشاركة أي أفكار بعد</h3>
+            <p className="text-muted-foreground mb-4">شارك أول فكرة ابتكار مع المجتمع</p>
+            <Button onClick={() => setIsIdeaDialogOpen(true)}>شارك فكرتك الأولى</Button>
           </div>
         </TabsContent>
 
         <TabsContent value="collaborations" className="space-y-6">
           <div className="text-center py-12">
             <Users className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
-            <h3 className="text-lg font-semibold mb-2">No active collaborations</h3>
+            <h3 className="text-lg font-semibold mb-2">لا يوجد تعاون نشط</h3>
             <p className="text-muted-foreground mb-4">
-              Join other students' projects or invite others to collaborate on your ideas
+              انضم إلى مشاريع الطلاب الآخرين أو ادعُ الآخرين للتعاون في أفكارك
             </p>
-            <Button variant="outline">Explore Ideas</Button>
+            <Button variant="outline">استكشف الأفكار</Button>
           </div>
         </TabsContent>
       </Tabs>

@@ -26,7 +26,7 @@ export default function PartnersPage() {
     {
       id: 2,
       name: "بنك التنمية الجزائري",
-      type: "شريك مالي",
+      type: "شريك مالي", 
       description: "بنك متخصص في تمويل المشاريع الناشئة والشركات الصغيرة والمتوسطة",
       logo: "/placeholder.svg?height=100&width=200",
       website: "https://bda.dz",
@@ -43,7 +43,7 @@ export default function PartnersPage() {
       name: "مجمع الصناعات التقنية",
       type: "شريك صناعي",
       description: "مجمع يضم أكبر الشركات الصناعية والتقنية في الجزائر",
-      logo: "/placeholder.svg?height=100&width=200",
+      logo: "/placeholder.svg?height=100&width=200", 
       website: "https://techpark.dz",
       email: "partnerships@techpark.dz",
       phone: "+213 21 345 678",
@@ -60,7 +60,7 @@ export default function PartnersPage() {
       description: "مؤسسة حكومية تدعم الابتكار والبحث العلمي في الجزائر",
       logo: "/placeholder.svg?height=100&width=200",
       website: "https://innovation.gov.dz",
-      email: "contact@innovation.gov.dz",
+      email: "contact@innovation.gov.dz", 
       phone: "+213 21 567 890",
       location: "الجزائر العاصمة",
       services: ["دعم الابتكار", "منح بحثية", "برامج تدريبية"],
@@ -77,7 +77,7 @@ export default function PartnersPage() {
       website: "https://smartcom.dz",
       email: "info@smartcom.dz",
       phone: "+213 21 234 567",
-      location: "قسنطينة",
+      location: "قسنطينة", 
       services: ["شبكات ذكية", "إنترنت الأشياء", "أمن المعلومات"],
       partnership: "شراكة تقنية",
       since: "2022",
@@ -94,7 +94,7 @@ export default function PartnersPage() {
       phone: "+213 21 890 123",
       location: "عنابة",
       services: ["تدريب ريادي", "ورش عمل", "استشارات إدارية"],
-      partnership: "شراكة تدريب",
+      partnership: "شراكة تدريب", 
       since: "2020",
       featured: false,
     },
@@ -103,7 +103,7 @@ export default function PartnersPage() {
   const partnerTypes = ["جميع الشركاء", "شريك تقني", "شريك مالي", "شريك صناعي", "شريك أكاديمي", "شريك تدريبي"]
 
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-6">
         {/* Header */}
         <div className="text-center space-y-4">

@@ -132,7 +132,7 @@ export default function MarketplacePage() {
   })
 
   return (
-    <div className="min-h-screen bg-background" dir="rtl">
+    <div className="min-h-screen bg-background">
       <div className="container mx-auto p-6 space-y-6">
         {/* Header */}
         <div className="flex flex-col space-y-4">
@@ -147,12 +147,12 @@ export default function MarketplacePage() {
           {/* Filters */}
           <div className="flex flex-col md:flex-row gap-4">
             <div className="relative flex-1">
-              <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="ابحث في المشاريع..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="pr-10"
+                className="pl-10"
               />
             </div>
             <Select value={categoryFilter} onValueChange={setCategoryFilter}>
@@ -196,10 +196,10 @@ export default function MarketplacePage() {
                       alt={project.name}
                       className="w-full h-48 object-cover"
                     />
-                    <Badge className="absolute top-2 right-2 bg-[#18A39E] text-white">مميز</Badge>
+                    <Badge className="absolute top-2 left-2 bg-[#18A39E] text-white">مميز</Badge>
                     <Badge
                       variant={project.status === "متاح" ? "default" : "secondary"}
-                      className="absolute top-2 left-2"
+                      className="absolute top-2 right-2"
                     >
                       {project.status}
                     </Badge>
@@ -272,10 +272,10 @@ export default function MarketplacePage() {
                       alt={project.name}
                       className="w-full h-48 object-cover"
                     />
-                    {project.featured && <Badge className="absolute top-2 right-2 bg-[#18A39E] text-white">مميز</Badge>}
+                    {project.featured && <Badge className="absolute top-2 left-2 bg-[#18A39E] text-white">مميز</Badge>}
                     <Badge
                       variant={project.status === "متاح" ? "default" : "secondary"}
-                      className="absolute top-2 left-2"
+                      className="absolute top-2 right-2"
                     >
                       {project.status}
                     </Badge>

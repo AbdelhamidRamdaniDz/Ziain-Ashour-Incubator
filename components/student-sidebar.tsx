@@ -11,13 +11,14 @@ import {
   Home,
   Lightbulb,
   MessageSquare,
-  PanelLeft,
   Presentation,
   Search,
   Settings,
   ShoppingBag,
   PenToolIcon as Tool,
   Users,
+  PanelLeft,
+  PanelRight
 } from "lucide-react"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
@@ -32,102 +33,102 @@ export function StudentSidebar({ className, isCollapsed, onToggle }: SidebarProp
 
   const routes = [
     {
-      label: "Dashboard",
+      label: "لوحة التحكم",
       icon: Home,
       href: "/student-portal",
       active: pathname === "/student-portal",
     },
     {
-      label: "Courses",
+      label: "الدورات",
       icon: BookOpen,
       href: "/student-portal/courses",
       active: pathname === "/student-portal/courses",
     },
     {
-      label: "Digital Library",
+      label: "المكتبة الرقمية",
       icon: FileText,
       href: "/student-portal/library",
       active: pathname === "/student-portal/library",
     },
     {
-      label: "Patent Submission",
+      label: "تقديم براءة اختراع",
       icon: FileText,
       href: "/student-portal/patent-submission",
       active: pathname === "/student-portal/patent-submission",
     },
     {
-      label: "Presentation Builder",
+      label: "منشئ العروض التقديمية",
       icon: Presentation,
       href: "/student-portal/presentations",
       active: pathname === "/student-portal/presentations",
     },
     {
-      label: "Task Management",
+      label: "إدارة المهام",
       icon: Calendar,
       href: "/student-portal/tasks",
       active: pathname === "/student-portal/tasks",
     },
     {
-      label: "KPI Dashboard",
+      label: "لوحة مؤشرات الأداء",
       icon: BarChart3,
       href: "/student-portal/kpi",
       active: pathname === "/student-portal/kpi",
     },
     {
-      label: "Business Tools",
+      label: "أدوات الأعمال",
       icon: Tool,
       href: "/student-portal/tools",
       active: pathname === "/student-portal/tools",
     },
     {
-      label: "Innovation Hub",
+      label: "مركز الابتكار",
       icon: Lightbulb,
       href: "/student-portal/innovation",
       active: pathname === "/student-portal/innovation",
     },
     {
-      label: "Equipment Request",
+      label: "طلب المعدات",
       icon: Tool,
       href: "/student-portal/equipment",
       active: pathname === "/student-portal/equipment",
     },
     {
-      label: "Knowledge Forum",
+      label: "منتدى المعرفة",
       icon: MessageSquare,
       href: "/student-portal/forum",
       active: pathname === "/student-portal/forum",
     },
     {
-      label: "Startup Marketplace",
+      label: "سوق الشركات الناشئة",
       icon: ShoppingBag,
       href: "/student-portal/marketplace",
       active: pathname === "/student-portal/marketplace",
     },
     {
-      label: "Opportunities",
+      label: "الفرص",
       icon: Calendar,
       href: "/student-portal/opportunities",
       active: pathname === "/student-portal/opportunities",
     },
     {
-      label: "Partner Match",
+      label: "شركاء الأعمال",
       icon: Users,
       href: "/student-portal/partners",
       active: pathname === "/student-portal/partners",
     },
     {
-      label: "Messages",
+      label: "الرسائل",
       icon: MessageSquare,
       href: "/student-portal/messages",
       active: pathname === "/student-portal/messages",
     },
     {
-      label: "Settings",
+      label: "الإعدادات",
       icon: Settings,
       href: "/student-portal/settings",
       active: pathname === "/student-portal/settings",
     },
-  ]
+  ]  
 
   return (
     <div className={cn("relative flex flex-col border-r bg-background", className)}>
@@ -135,7 +136,11 @@ export function StudentSidebar({ className, isCollapsed, onToggle }: SidebarProp
         <div className="flex w-full items-center justify-between">
           {!isCollapsed && <span className="text-lg font-semibold">Student Portal</span>}
           <Button variant="ghost" size="icon" className="ml-auto h-8 w-8" onClick={onToggle}>
-            <PanelLeft className="h-4 w-4" />
+            {isCollapsed ? (
+              <PanelRight className="h-4 w-4" />
+            ) : (
+              <PanelLeft className="h-4 w-4" />
+            )}
             <span className="sr-only">Toggle Sidebar</span>
           </Button>
         </div>

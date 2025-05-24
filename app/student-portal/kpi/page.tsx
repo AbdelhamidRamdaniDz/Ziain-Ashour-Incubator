@@ -77,7 +77,7 @@ export default function KPIPage() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       <div>
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">مؤشرات الأداء</h1>
         <p className="text-gray-600 dark:text-gray-400 mt-2">تتبع وتحليل مؤشرات الأداء الرئيسية للمشاريع</p>
@@ -94,7 +94,7 @@ export default function KPIPage() {
               </CardHeader>
               <CardContent>
                 <div className="text-2xl font-bold">{kpi.value}</div>
-                <div className="flex items-center space-x-2 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2 text-xs text-muted-foreground">
                   {kpi.trend === "up" ? (
                     <TrendingUp className="h-4 w-4 text-green-600" />
                   ) : (
