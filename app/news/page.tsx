@@ -1,325 +1,127 @@
-import { Input } from "@/components/ui/input"
 import Link from "next/link"
-import { ArrowRight, Calendar, ChevronRight, User } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Calendar, User, ArrowLeft } from "lucide-react"
 
 export default function NewsPage() {
-  // Mock data for news articles
   const newsArticles = [
     {
       id: 1,
-      title: "Ziain Ashour Incubator Launches New AI Innovation Program",
-      excerpt:
-        "The university's startup incubator announces a specialized program focused on artificial intelligence applications.",
-      date: "May 20, 2025",
-      author: "Admin Team",
-      category: "announcements",
+      title: "إطلاق برنامج جديد لدعم المشاريع التقنية",
+      excerpt: "تعلن حاضنة جامعة زيان عاشور عن إطلاق برنامج متخصص لدعم المشاريع التقنية والابتكارية للطلاب",
+      date: "15 مايو 2025",
+      author: "فريق الحاضنة",
       image: "/placeholder.svg?height=200&width=400",
+      category: "إعلانات",
     },
     {
       id: 2,
-      title: "Student Startup Secures $1.5M in Seed Funding",
-      excerpt:
-        "EcoTrack, a student-led environmental monitoring startup from our incubator, has secured significant investment.",
-      date: "May 15, 2025",
-      author: "Karim Hadad",
-      category: "success-stories",
+      title: "نجاح مشروع طلابي في الحصول على تمويل بقيمة مليون دينار",
+      excerpt: "حقق مشروع 'تطبيق الصحة الذكي' الذي طوره طلاب من كلية الطب نجاحاً باهراً في الحصول على تمويل",
+      date: "12 مايو 2025",
+      author: "أحمد بن علي",
       image: "/placeholder.svg?height=200&width=400",
+      category: "قصص نجاح",
     },
     {
       id: 3,
-      title: "Upcoming Workshop: Business Model Canvas Masterclass",
-      excerpt:
-        "Join our expert mentors for a hands-on workshop on developing effective business models for your startup.",
-      date: "May 12, 2025",
-      author: "Events Team",
-      category: "events",
+      title: "ورشة عمل حول ريادة الأعمال والابتكار",
+      excerpt: "تنظم الحاضنة ورشة عمل شاملة حول أساسيات ريادة الأعمال والابتكار للطلاب المهتمين",
+      date: "10 مايو 2025",
+      author: "د. فاطمة الزهراء",
       image: "/placeholder.svg?height=200&width=400",
+      category: "فعاليات",
     },
     {
       id: 4,
-      title: "New Partnership with Global Tech Company Announced",
-      excerpt:
-        "Ziain Ashour Incubator partners with leading technology firm to provide advanced resources to student entrepreneurs.",
-      date: "May 10, 2025",
-      author: "Admin Team",
-      category: "announcements",
+      title: "شراكة جديدة مع شركة تقنية عالمية",
+      excerpt: "توقع الحاضنة اتفاقية شراكة استراتيجية مع شركة تقنية عالمية لدعم المشاريع الطلابية",
+      date: "8 مايو 2025",
+      author: "إدارة الحاضنة",
       image: "/placeholder.svg?height=200&width=400",
+      category: "شراكات",
     },
     {
       id: 5,
-      title: "Student Startup Featured in National Innovation Magazine",
-      excerpt:
-        "MediRemind, a healthcare app developed by pharmacy students, receives national recognition for its innovative approach.",
-      date: "May 5, 2025",
-      author: "Yasmine Tazi",
-      category: "success-stories",
+      title: "مسابقة أفضل مشروع ريادي للعام 2025",
+      excerpt: "تعلن الحاضنة عن إطلاق مسابقة سنوية لأفضل مشروع ريادي بجوائز قيمة للفائزين",
+      date: "5 مايو 2025",
+      author: "لجنة التحكيم",
       image: "/placeholder.svg?height=200&width=400",
+      category: "مسابقات",
     },
     {
       id: 6,
-      title: "Entrepreneurship Summit: Registration Now Open",
-      excerpt:
-        "Register now for our annual Entrepreneurship Summit featuring keynote speakers, workshops, and networking opportunities.",
-      date: "May 1, 2025",
-      author: "Events Team",
-      category: "events",
+      title: "تخرج الدفعة الثالثة من برنامج الحاضنة",
+      excerpt: "احتفلت الحاضنة بتخرج 25 مشروعاً ناجحاً من الدفعة الثالثة لبرنامج الاحتضان",
+      date: "2 مايو 2025",
+      author: "فريق البرامج",
       image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      id: 7,
-      title: "Incubator Expands Facilities with New Prototyping Lab",
-      excerpt:
-        "State-of-the-art prototyping equipment now available to all incubator members in our newly expanded facilities.",
-      date: "April 28, 2025",
-      author: "Admin Team",
-      category: "announcements",
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      id: 8,
-      title: "Alumni Startup Reaches 100,000 Users Milestone",
-      excerpt:
-        "StudyBuddy, an AI-powered study assistant developed by former incubator members, celebrates significant user growth.",
-      date: "April 25, 2025",
-      author: "Omar Mansouri",
-      category: "success-stories",
-      image: "/placeholder.svg?height=200&width=400",
-    },
-    {
-      id: 9,
-      title: "Patent Workshop Series: Protecting Your Innovations",
-      excerpt:
-        "Learn how to protect your intellectual property with our comprehensive patent workshop series starting next month.",
-      date: "April 20, 2025",
-      author: "Events Team",
-      category: "events",
-      image: "/placeholder.svg?height=200&width=400",
+      category: "تخرج",
     },
   ]
 
   return (
-    <div className="container py-12">
-      <div className="mx-auto max-w-3xl text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">News & Blog</h1>
-        <p className="mt-4 text-muted-foreground md:text-lg">
-          Stay updated with the latest news, events, and success stories from our incubator community.
-        </p>
-      </div>
+    <div className="min-h-screen bg-background" dir="rtl">
+      <div className="container mx-auto px-4 py-12">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-foreground mb-4">الأخبار</h1>
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+            تابع آخر الأخبار والتطورات في حاضنة جامعة زيان عاشور
+          </p>
+        </div>
 
-      <div className="mt-12">
-        <Tabs defaultValue="all">
-          <div className="flex items-center justify-between">
-            <TabsList>
-              <TabsTrigger value="all">All News</TabsTrigger>
-              <TabsTrigger value="announcements">Announcements</TabsTrigger>
-              <TabsTrigger value="success-stories">Success Stories</TabsTrigger>
-              <TabsTrigger value="events">Events</TabsTrigger>
-            </TabsList>
-            <div className="hidden md:block">
-              <Button variant="outline" size="sm" className="gap-2">
-                Subscribe to Newsletter
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-
-          <TabsContent value="all" className="mt-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {newsArticles.map((article) => (
-                <Card key={article.id} className="overflow-hidden">
-                  <div className="aspect-video w-full overflow-hidden">
-                    <img
-                      src={article.image || "/placeholder.svg"}
-                      alt={article.title}
-                      className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                    />
+        {/* News Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {newsArticles.map((article) => (
+            <Card key={article.id} className="overflow-hidden hover:shadow-lg transition-shadow">
+              <div className="aspect-video overflow-hidden">
+                <img
+                  src={article.image || "/placeholder.svg"}
+                  alt={article.title}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <CardHeader className="pb-3">
+                <div className="flex items-center gap-4 text-sm text-muted-foreground mb-2">
+                  <div className="flex items-center gap-1">
+                    <Calendar className="h-4 w-4" />
+                    <span>{article.date}</span>
                   </div>
-                  <CardHeader className="p-4 pb-0">
-                    <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
-                      <span className="flex items-center gap-1">
-                        <Calendar className="h-3 w-3" />
-                        {article.date}
-                      </span>
-                      <span>•</span>
-                      <span className="flex items-center gap-1">
-                        <User className="h-3 w-3" />
-                        {article.author}
-                      </span>
-                    </div>
-                    <CardTitle className="line-clamp-2 text-lg">{article.title}</CardTitle>
-                  </CardHeader>
-                  <CardContent className="p-4 pt-2">
-                    <CardDescription className="line-clamp-3">{article.excerpt}</CardDescription>
-                  </CardContent>
-                  <CardFooter className="p-4 pt-0">
-                    <Link href={`/news/${article.id}`} className="w-full">
-                      <Button variant="outline" className="w-full gap-1">
-                        Read More
-                        <ChevronRight className="h-4 w-4" />
-                      </Button>
-                    </Link>
-                  </CardFooter>
-                </Card>
-              ))}
-            </div>
-          </TabsContent>
+                  <div className="flex items-center gap-1">
+                    <User className="h-4 w-4" />
+                    <span>{article.author}</span>
+                  </div>
+                </div>
+                <div className="inline-block">
+                  <span className="bg-[#18A39E]/10 text-[#18A39E] px-2 py-1 rounded-full text-xs font-medium">
+                    {article.category}
+                  </span>
+                </div>
+                <CardTitle className="text-lg leading-tight line-clamp-2">{article.title}</CardTitle>
+              </CardHeader>
+              <CardContent className="pt-0">
+                <CardDescription className="line-clamp-3 mb-4">{article.excerpt}</CardDescription>
+                <Link href={`/news/${article.id}`}>
+                  <Button
+                    variant="outline"
+                    className="w-full group hover:bg-[#18A39E] hover:text-white hover:border-[#18A39E]"
+                  >
+                    اقرأ المزيد
+                    <ArrowLeft className="mr-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
 
-          <TabsContent value="announcements" className="mt-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {newsArticles
-                .filter((article) => article.category === "announcements")
-                .map((article) => (
-                  <Card key={article.id} className="overflow-hidden">
-                    <div className="aspect-video w-full overflow-hidden">
-                      <img
-                        src={article.image || "/placeholder.svg"}
-                        alt={article.title}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                    <CardHeader className="p-4 pb-0">
-                      <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {article.date}
-                        </span>
-                        <span>•</span>
-                        <span className="flex items-center gap-1">
-                          <User className="h-3 w-3" />
-                          {article.author}
-                        </span>
-                      </div>
-                      <CardTitle className="line-clamp-2 text-lg">{article.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-2">
-                      <CardDescription className="line-clamp-3">{article.excerpt}</CardDescription>
-                    </CardContent>
-                    <CardFooter className="p-4 pt-0">
-                      <Link href={`/news/${article.id}`} className="w-full">
-                        <Button variant="outline" className="w-full gap-1">
-                          Read More
-                          <ChevronRight className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="success-stories" className="mt-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {newsArticles
-                .filter((article) => article.category === "success-stories")
-                .map((article) => (
-                  <Card key={article.id} className="overflow-hidden">
-                    <div className="aspect-video w-full overflow-hidden">
-                      <img
-                        src={article.image || "/placeholder.svg"}
-                        alt={article.title}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                    <CardHeader className="p-4 pb-0">
-                      <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {article.date}
-                        </span>
-                        <span>•</span>
-                        <span className="flex items-center gap-1">
-                          <User className="h-3 w-3" />
-                          {article.author}
-                        </span>
-                      </div>
-                      <CardTitle className="line-clamp-2 text-lg">{article.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-2">
-                      <CardDescription className="line-clamp-3">{article.excerpt}</CardDescription>
-                    </CardContent>
-                    <CardFooter className="p-4 pt-0">
-                      <Link href={`/news/${article.id}`} className="w-full">
-                        <Button variant="outline" className="w-full gap-1">
-                          Read More
-                          <ChevronRight className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                ))}
-            </div>
-          </TabsContent>
-
-          <TabsContent value="events" className="mt-6">
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {newsArticles
-                .filter((article) => article.category === "events")
-                .map((article) => (
-                  <Card key={article.id} className="overflow-hidden">
-                    <div className="aspect-video w-full overflow-hidden">
-                      <img
-                        src={article.image || "/placeholder.svg"}
-                        alt={article.title}
-                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
-                      />
-                    </div>
-                    <CardHeader className="p-4 pb-0">
-                      <div className="mb-2 flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="flex items-center gap-1">
-                          <Calendar className="h-3 w-3" />
-                          {article.date}
-                        </span>
-                        <span>•</span>
-                        <span className="flex items-center gap-1">
-                          <User className="h-3 w-3" />
-                          {article.author}
-                        </span>
-                      </div>
-                      <CardTitle className="line-clamp-2 text-lg">{article.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-4 pt-2">
-                      <CardDescription className="line-clamp-3">{article.excerpt}</CardDescription>
-                    </CardContent>
-                    <CardFooter className="p-4 pt-0">
-                      <Link href={`/news/${article.id}`} className="w-full">
-                        <Button variant="outline" className="w-full gap-1">
-                          Read More
-                          <ChevronRight className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </CardFooter>
-                  </Card>
-                ))}
-            </div>
-          </TabsContent>
-        </Tabs>
-      </div>
-
-      <div className="mt-12 flex justify-center">
-        <Button variant="outline" size="lg">
-          Load More Articles
-        </Button>
-      </div>
-
-      <div className="mt-16 rounded-lg bg-primary/5 p-8 md:p-12">
-        <div className="mx-auto max-w-3xl text-center">
-          <h2 className="text-2xl font-bold md:text-3xl">Subscribe to Our Newsletter</h2>
-          <p className="mt-2 text-muted-foreground">
-            Stay updated with the latest news, events, and success stories from our incubator community.
-          </p>
-          <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-center">
-            <Input type="email" placeholder="Enter your email address" className="max-w-md sm:min-w-[300px]" />
-            <Button className="gap-2">
-              Subscribe
-              <ArrowRight className="h-4 w-4" />
-            </Button>
-          </div>
-          <p className="mt-4 text-xs text-muted-foreground">
-            By subscribing, you agree to our Privacy Policy and consent to receive updates from our team.
-          </p>
+        {/* Load More Button */}
+        <div className="text-center mt-12">
+          <Button variant="outline" size="lg" className="hover:bg-[#18A39E] hover:text-white hover:border-[#18A39E]">
+            تحميل المزيد من الأخبار
+          </Button>
         </div>
       </div>
     </div>
