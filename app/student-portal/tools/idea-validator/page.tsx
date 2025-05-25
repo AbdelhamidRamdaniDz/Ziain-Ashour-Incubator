@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useReducer, useCallback } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Label } from "@/components/ui/label"
@@ -10,185 +10,314 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Checkbox } from "@/components/ui/checkbox"
 import { CheckCircle, AlertCircle, XCircle, Lightbulb, Target, Users, DollarSign, TrendingUp } from "lucide-react"
 
-export default function IdeaValidatorPage() {
-  const [currentStep, setCurrentStep] = useState(1)
-  const [answers, setAnswers] = useState<Record<string, any>>({})
-  const [score, setScore] = useState(0)
+// Types
+type Question = {
+  id: number
+  category: string
+  title: string
+  description: string
+  type: "radio" | "checkbox" | "text"
+  options: {
+    value: string
+    label: string
+    points: number
+  }[]
+}
 
-  const questions = [
-    {
-      id: 1,
-      category: "المشكلة",
-      title: "هل تحل فكرتك مشكلة حقيقية؟",
-      description: "الأفكار الناجحة تحل مشاكل حقيقية يواجهها الناس",
-      type: "radio",
-      options: [
-        { value: "yes_validated", label: "نعم، وقد تأكدت من ذلك من خلال البحث", points: 10 },
-        { value: "yes_assumed", label: "نعم، لكن هذا مجرد افتراض", points: 6 },
-        { value: "maybe", label: "ربما، لست متأكداً", points: 3 },
-        { value: "no", label: "لا، إنها مجرد فكرة جيدة", points: 0 },
-      ],
-    },
-    {
-      id: 2,
-      category: "السوق",
-      title: "ما حجم السوق المستهدف؟",
-      description: "حجم السوق يحدد إمكانية نمو مشروعك",
-      type: "radio",
-      options: [
-        { value: "large", label: "كبير (أكثر من مليون شخص)", points: 10 },
-        { value: "medium", label: "متوسط (100 ألف - مليون شخص)", points: 7 },
-        { value: "small", label: "صغير (10-100 ألف شخص)", points: 4 },
-        { value: "very_small", label: "صغير جداً (أقل من 10 آلاف)", points: 1 },
-      ],
-    },
-    {
-      id: 3,
-      category: "المنافسة",
-      title: "كم عدد المنافسين المباشرين؟",
-      description: "المنافسة تدل على وجود سوق، لكن الكثير منها قد يكون مشكلة",
-      type: "radio",
-      options: [
-        { value: "none", label: "لا يوجد منافسون", points: 3 },
-        { value: "few", label: "1-3 منافسين", points: 8 },
-        { value: "some", label: "4-10 منافسين", points: 6 },
-        { value: "many", label: "أكثر من 10 منافسين", points: 2 },
-      ],
-    },
-    {
-      id: 4,
-      category: "الميزة التنافسية",
-      title: "ما الذي يميز فكرتك عن المنافسين؟",
-      description: "الميزة التنافسية ضرورية للنجاح",
-      type: "checkbox",
-      options: [
-        { value: "technology", label: "تقنية متقدمة", points: 3 },
-        { value: "price", label: "سعر أفضل", points: 2 },
-        { value: "quality", label: "جودة أعلى", points: 3 },
-        { value: "service", label: "خدمة عملاء ممتازة", points: 2 },
-        { value: "speed", label: "سرعة في التنفيذ", points: 2 },
-        { value: "innovation", label: "ابتكار في الحل", points: 4 },
-        { value: "none", label: "لا يوجد ميزة واضحة", points: -5 },
-      ],
-    },
-    {
-      id: 5,
-      category: "نموذج العمل",
-      title: "كيف ستحقق الأرباح؟",
-      description: "نموذج عمل واضح ضروري للاستدامة",
-      type: "radio",
-      options: [
-        { value: "clear_tested", label: "لدي نموذج واضح ومختبر", points: 10 },
-        { value: "clear_untested", label: "لدي نموذج واضح لكن غير مختبر", points: 7 },
-        { value: "ideas", label: "لدي أفكار متعددة", points: 4 },
-        { value: "unclear", label: "غير واضح بعد", points: 1 },
-      ],
-    },
-    {
-      id: 6,
-      category: "الفريق",
-      title: "هل لديك فريق مناسب؟",
-      description: "الفريق المناسب عامل مهم في نجاح المشروع",
-      type: "radio",
-      options: [
-        { value: "complete", label: "فريق كامل بالمهارات المطلوبة", points: 10 },
-        { value: "partial", label: "فريق جزئي، نحتاج أعضاء إضافيين", points: 6 },
-        { value: "founder_only", label: "المؤسس فقط حالياً", points: 3 },
-        { value: "no_team", label: "لا يوجد فريق بعد", points: 0 },
-      ],
-    },
-    {
-      id: 7,
-      category: "التمويل",
-      title: "ما مقدار التمويل المطلوب للبداية؟",
-      description: "التمويل المطلوب يؤثر على سهولة تنفيذ المشروع",
-      type: "radio",
-      options: [
-        { value: "minimal", label: "أقل من 10 آلاف دولار", points: 8 },
-        { value: "moderate", label: "10-50 ألف دولار", points: 6 },
-        { value: "substantial", label: "50-200 ألف دولار", points: 4 },
-        { value: "large", label: "أكثر من 200 ألف دولار", points: 2 },
-      ],
-    },
-    {
-      id: 8,
-      category: "التحقق",
-      title: "هل اختبرت فكرتك مع العملاء المحتملين؟",
-      description: "التحقق من السوق أمر بالغ الأهمية",
-      type: "radio",
-      options: [
-        { value: "extensive", label: "نعم، اختبار شامل مع ردود إيجابية", points: 10 },
-        { value: "some", label: "نعم، اختبار محدود مع ردود مختلطة", points: 6 },
-        { value: "minimal", label: "اختبار بسيط فقط", points: 3 },
-        { value: "none", label: "لم أختبرها بعد", points: 0 },
-      ],
-    },
-  ]
+type State = {
+  currentStep: number
+  answers: Record<string, any>
+  score: number
+  isComplete: boolean
+}
 
-  const handleAnswer = (questionId: number, value: any) => {
-    setAnswers((prev) => ({
-      ...prev,
-      [questionId]: value,
-    }))
+type Action =
+  | { type: "SET_ANSWER"; questionId: number; value: any }
+  | { type: "NEXT_STEP" }
+  | { type: "PREVIOUS_STEP" }
+  | { type: "CALCULATE_SCORE" }
+  | { type: "RESET" }
+
+// Questions data
+const questions: Question[] = [
+  {
+    id: 1,
+    category: "السوق",
+    title: "ما هو حجم السوق المستهدف؟",
+    description: "حدد حجم السوق الذي تستهدفه لفكرتك",
+    type: "radio",
+    options: [
+      { value: "small", label: "سوق صغير (أقل من 1 مليون مستخدم)", points: 2 },
+      { value: "medium", label: "سوق متوسط (1-10 مليون مستخدم)", points: 5 },
+      { value: "large", label: "سوق كبير (أكثر من 10 مليون مستخدم)", points: 8 }
+    ]
+  },
+  {
+    id: 2,
+    category: "المنافسة",
+    title: "ما هو مستوى المنافسة في السوق؟",
+    description: "حدد مستوى المنافسة في السوق المستهدف",
+    type: "radio",
+    options: [
+      { value: "high", label: "منافسة عالية", points: 2 },
+      { value: "medium", label: "منافسة متوسطة", points: 5 },
+      { value: "low", label: "منافسة منخفضة", points: 8 }
+    ]
+  },
+  {
+    id: 3,
+    category: "التمويل",
+    title: "ما هي متطلبات التمويل الأولية؟",
+    description: "حدد المبلغ المطلوب لبدء المشروع",
+    type: "radio",
+    options: [
+      { value: "low", label: "أقل من 50,000 ريال", points: 8 },
+      { value: "medium", label: "50,000 - 200,000 ريال", points: 5 },
+      { value: "high", label: "أكثر من 200,000 ريال", points: 2 }
+    ]
+  },
+  {
+    id: 4,
+    category: "الفريق",
+    title: "ما هي المهارات المتوفرة في فريقك؟",
+    description: "اختر المهارات المتوفرة في فريقك",
+    type: "checkbox",
+    options: [
+      { value: "technical", label: "مهارات تقنية", points: 5 },
+      { value: "marketing", label: "مهارات تسويقية", points: 5 },
+      { value: "business", label: "مهارات إدارية", points: 5 },
+      { value: "design", label: "مهارات تصميم", points: 5 }
+    ]
   }
+]
 
-  const calculateScore = () => {
-    let totalScore = 0
-    questions.forEach((question) => {
-      const answer = answers[question.id]
-      if (question.type === "radio" && answer) {
-        const option = question.options.find((opt) => opt.value === answer)
-        if (option) totalScore += option.points
-      } else if (question.type === "checkbox" && answer) {
-        answer.forEach((val: string) => {
-          const option = question.options.find((opt) => opt.value === val)
-          if (option) totalScore += option.points
-        })
+// Reducer
+const initialState: State = {
+  currentStep: 1,
+  answers: {},
+  score: 0,
+  isComplete: false
+}
+
+function reducer(state: State, action: Action): State {
+  switch (action.type) {
+    case "SET_ANSWER":
+      return {
+        ...state,
+        answers: {
+          ...state.answers,
+          [action.questionId]: action.value
+        }
       }
-    })
-    setScore(totalScore)
-  }
+    case "NEXT_STEP":
+      if (state.currentStep < questions.length) {
+        return {
+          ...state,
+          currentStep: state.currentStep + 1
+        }
+      }
+      return state
+    case "PREVIOUS_STEP":
+      if (state.currentStep > 1) {
+        return {
+          ...state,
+          currentStep: state.currentStep - 1
+        }
+      }
+      return state
+    case "CALCULATE_SCORE":
+      const totalScore = Object.entries(state.answers).reduce((sum, [questionId, answer]) => {
+        const question = questions.find(q => q.id === parseInt(questionId))
+        if (!question) return sum
 
-  const getScoreLevel = (score: number) => {
-    if (score >= 70) return { level: "ممتاز", color: "text-green-600", icon: CheckCircle }
-    if (score >= 50) return { level: "جيد", color: "text-yellow-600", icon: AlertCircle }
-    if (score >= 30) return { level: "يحتاج تحسين", color: "text-orange-600", icon: AlertCircle }
-    return { level: "ضعيف", color: "text-red-600", icon: XCircle }
-  }
+        if (question.type === "radio") {
+          const option = question.options.find(opt => opt.value === answer)
+          return sum + (option?.points || 0)
+        } else if (question.type === "checkbox" && Array.isArray(answer)) {
+          return sum + answer.reduce((optionSum, value) => {
+            const option = question.options.find(opt => opt.value === value)
+            return optionSum + (option?.points || 0)
+          }, 0)
+        }
+        return sum
+      }, 0)
 
-  const getRecommendations = (score: number) => {
-    if (score >= 70) {
+      return {
+        ...state,
+        score: totalScore,
+        isComplete: true
+      }
+    case "RESET":
+      return initialState
+    default:
+      return state
+  }
+}
+
+// Components
+const QuestionCard = ({ question, answer, onAnswer }: {
+  question: Question
+  answer: any
+  onAnswer: (value: any) => void
+}) => (
+  <Card className="max-w-4xl mx-auto">
+    <CardHeader>
+      <div className="flex items-center gap-3">
+        <div className="w-10 h-10 rounded-full bg-[#18A39E] text-white flex items-center justify-center font-bold">
+          {question.id}
+        </div>
+        <div>
+          <Badge variant="outline" className="mb-2">
+            {question.category}
+          </Badge>
+          <CardTitle className="text-xl">{question.title}</CardTitle>
+          <CardDescription className="mt-2">{question.description}</CardDescription>
+        </div>
+      </div>
+    </CardHeader>
+    <CardContent className="space-y-6">
+      {question.type === "radio" ? (
+        <RadioGroup
+          value={answer || ""}
+          onValueChange={onAnswer}
+          className="space-y-4"
+        >
+          {question.options.map((option) => (
+            <div key={option.value} className="flex items-center gap-2">
+              <Label htmlFor={option.value} className="flex-1 cursor-pointer text-right">
+                {option.label}
+              </Label>
+              <RadioGroupItem value={option.value} id={option.value} />
+              <Badge variant="secondary" className="text-xs">
+                {option.points} نقطة
+              </Badge>
+            </div>
+          ))}
+        </RadioGroup>
+      ) : (
+        <div className="space-y-3">
+          {question.options.map((option) => (
+            <div key={option.value} className="flex items-center gap-2">
+              <Label htmlFor={option.value} className="flex-1 cursor-pointer text-right">
+                {option.label}
+              </Label>
+              <Checkbox
+                id={option.value}
+                checked={answer?.includes(option.value) || false}
+                onCheckedChange={(checked) => {
+                  const currentAnswers = answer || []
+                  if (checked) {
+                    onAnswer([...currentAnswers, option.value])
+                  } else {
+                    onAnswer(currentAnswers.filter((v: string) => v !== option.value))
+                  }
+                }}
+              />
+              <Badge variant="secondary" className="text-xs">
+                {option.points > 0 ? `+${option.points}` : option.points} نقطة
+              </Badge>
+            </div>
+          ))}
+        </div>
+      )}
+    </CardContent>
+  </Card>
+)
+
+const StepNavigation = ({ currentStep, totalSteps, onNext, onPrevious, isNextDisabled }: {
+  currentStep: number
+  totalSteps: number
+  onNext: () => void
+  onPrevious: () => void
+  isNextDisabled: boolean
+}) => (
+  <div className="flex justify-between pt-6">
+    <Button
+      variant="outline"
+      onClick={onPrevious}
+      disabled={currentStep === 1}
+    >
+      السؤال السابق
+    </Button>
+    <Button
+      onClick={onNext}
+      disabled={isNextDisabled}
+      className="bg-[#18A39E] hover:bg-[#16918A]"
+    >
+      {currentStep === totalSteps ? "احسب النتيجة" : "السؤال التالي"}
+    </Button>
+  </div>
+)
+
+export default function IdeaValidatorPage() {
+  const [state, dispatch] = useReducer(reducer, initialState)
+  const { currentStep, answers, score, isComplete } = state
+
+  const progress = (currentStep / questions.length) * 100
+
+  const handleAnswer = useCallback((questionId: number, value: any) => {
+    dispatch({ type: "SET_ANSWER", questionId, value })
+  }, [])
+
+  const handleNext = useCallback(() => {
+    if (currentStep === questions.length) {
+      dispatch({ type: "CALCULATE_SCORE" })
+    } else {
+      dispatch({ type: "NEXT_STEP" })
+    }
+  }, [currentStep])
+
+  const handlePrevious = useCallback(() => {
+    dispatch({ type: "PREVIOUS_STEP" })
+  }, [])
+
+  const resetQuiz = useCallback(() => {
+    dispatch({ type: "RESET" })
+  }, [])
+
+  const getRecommendations = (score: number): string[] => {
+    if (score >= 60) {
       return [
-        "فكرتك تبدو واعدة جداً! ابدأ في تطوير النموذج الأولي",
-        "ركز على بناء فريق قوي وجمع التمويل",
-        "استمر في التحقق من السوق وتحسين المنتج",
-        "ابدأ في وضع خطة عمل مفصلة",
+        "فكرتك قوية جداً! يمكنك البدء في تطوير نموذج أولي",
+        "ركز على بناء فريق قوي",
+        "ابدأ في البحث عن تمويل"
       ]
-    } else if (score >= 50) {
+    } else if (score >= 40) {
       return [
-        "فكرتك لها إمكانيات، لكنها تحتاج تطوير",
-        "ركز على تحسين نقاط الضعف المحددة",
-        "اجر المزيد من البحوث السوقية",
-        "فكر في تطوير ميزة تنافسية أقوى",
-      ]
-    } else if (score >= 30) {
-      return [
-        "فكرتك تحتاج عمل كبير قبل التنفيذ",
-        "ارجع للبحث والتخطيط مرة أخرى",
-        "تحقق من وجود مشكلة حقيقية تحلها",
-        "ادرس السوق والمنافسين بعمق أكبر",
+        "فكرتك جيدة ولكن تحتاج إلى بعض التحسينات",
+        "قم بإجراء المزيد من البحث السوقي",
+        "حدد نقاط القوة والضعف في فكرتك"
       ]
     } else {
       return [
-        "فكرتك تحتاج إعادة تفكير جذرية",
-        "ابدأ من جديد بتحديد مشكلة واضحة",
-        "اجر بحث سوق شامل",
-        "فكر في فكرة مختلفة أو طور هذه بشكل كبير",
+        "فكرتك تحتاج إلى إعادة نظر",
+        "قم بتحليل المنافسين بشكل أعمق",
+        "ابحث عن نقاط تميز إضافية"
       ]
     }
   }
 
-  const progress = (currentStep / questions.length) * 100
+  const getScoreLevel = (score: number) => {
+    if (score >= 60) {
+      return {
+        level: "ممتاز",
+        color: "text-green-500",
+        icon: CheckCircle
+      }
+    } else if (score >= 40) {
+      return {
+        level: "جيد",
+        color: "text-yellow-500",
+        icon: AlertCircle
+      }
+    } else {
+      return {
+        level: "يحتاج تحسين",
+        color: "text-red-500",
+        icon: XCircle
+      }
+    }
+  }
 
   return (
     <div className="min-h-screen bg-background" dir="rtl">
@@ -206,98 +335,22 @@ export default function IdeaValidatorPage() {
           </div>
         </div>
 
-        {currentStep <= questions.length ? (
-          /* Question Card */
-          <Card className="max-w-4xl mx-auto">
-            <CardHeader>
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-[#18A39E] text-white flex items-center justify-center font-bold">
-                  {currentStep}
-                </div>
-                <div>
-                  <Badge variant="outline" className="mb-2">
-                    {questions[currentStep - 1].category}
-                  </Badge>
-                  <CardTitle className="text-xl">{questions[currentStep - 1].title}</CardTitle>
-                  <CardDescription className="mt-2">{questions[currentStep - 1].description}</CardDescription>
-                </div>
-              </div>
-            </CardHeader>
-            <CardContent className="space-y-6">
-              {questions[currentStep - 1].type === "radio" ? (
-                <RadioGroup
-                  value={answers[currentStep] || ""}
-                  onValueChange={(value) => handleAnswer(currentStep, value)}
-                >
-                  {questions[currentStep - 1].options.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
-                      <RadioGroupItem value={option.value} id={option.value} />
-                      <Label htmlFor={option.value} className="flex-1 cursor-pointer">
-                        {option.label}
-                      </Label>
-                      <Badge variant="secondary" className="text-xs">
-                        {option.points} نقطة
-                      </Badge>
-                    </div>
-                  ))}
-                </RadioGroup>
-              ) : (
-                <div className="space-y-3">
-                  {questions[currentStep - 1].options.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-2 space-x-reverse">
-                      <Checkbox
-                        id={option.value}
-                        checked={answers[currentStep]?.includes(option.value) || false}
-                        onCheckedChange={(checked) => {
-                          const currentAnswers = answers[currentStep] || []
-                          if (checked) {
-                            handleAnswer(currentStep, [...currentAnswers, option.value])
-                          } else {
-                            handleAnswer(
-                              currentStep,
-                              currentAnswers.filter((v: string) => v !== option.value),
-                            )
-                          }
-                        }}
-                      />
-                      <Label htmlFor={option.value} className="flex-1 cursor-pointer">
-                        {option.label}
-                      </Label>
-                      <Badge variant="secondary" className="text-xs">
-                        {option.points > 0 ? `+${option.points}` : option.points} نقطة
-                      </Badge>
-                    </div>
-                  ))}
-                </div>
-              )}
-
-              <div className="flex justify-between pt-6">
-                <Button
-                  variant="outline"
-                  onClick={() => setCurrentStep(Math.max(1, currentStep - 1))}
-                  disabled={currentStep === 1}
-                >
-                  السؤال السابق
-                </Button>
-                <Button
-                  onClick={() => {
-                    if (currentStep === questions.length) {
-                      calculateScore()
-                      setCurrentStep(currentStep + 1)
-                    } else {
-                      setCurrentStep(currentStep + 1)
-                    }
-                  }}
-                  disabled={!answers[currentStep]}
-                  className="bg-[#18A39E] hover:bg-[#16918A]"
-                >
-                  {currentStep === questions.length ? "احسب النتيجة" : "السؤال التالي"}
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
+        {!isComplete ? (
+          <>
+            <QuestionCard
+              question={questions[currentStep - 1]}
+              answer={answers[currentStep]}
+              onAnswer={(value) => handleAnswer(currentStep, value)}
+            />
+            <StepNavigation
+              currentStep={currentStep}
+              totalSteps={questions.length}
+              onNext={handleNext}
+              onPrevious={handlePrevious}
+              isNextDisabled={!answers[currentStep]}
+            />
+          </>
         ) : (
-          /* Results */
           <div className="max-w-4xl mx-auto space-y-6">
             {/* Score Card */}
             <Card>
@@ -308,7 +361,6 @@ export default function IdeaValidatorPage() {
                 <div className="space-y-4">
                   <div className="text-6xl font-bold text-[#18A39E]">{score}</div>
                   <div className="text-xl text-muted-foreground">من أصل 80 نقطة</div>
-
                   {(() => {
                     const { level, color, icon: Icon } = getScoreLevel(score)
                     return (
@@ -319,7 +371,6 @@ export default function IdeaValidatorPage() {
                     )
                   })()}
                 </div>
-
                 <Progress value={(score / 80) * 100} className="w-full max-w-md mx-auto" />
               </CardContent>
             </Card>
@@ -351,10 +402,10 @@ export default function IdeaValidatorPage() {
 
                       return (
                         <div key={question.id} className="flex justify-between items-center">
-                          <span className="text-sm">{question.category}</span>
                           <Badge variant={points >= 7 ? "default" : points >= 4 ? "secondary" : "destructive"}>
                             {points} نقطة
                           </Badge>
+                          <span className="text-sm text-right">{question.category}</span>
                         </div>
                       )
                     })}
@@ -373,8 +424,8 @@ export default function IdeaValidatorPage() {
                   <ul className="space-y-3">
                     {getRecommendations(score).map((recommendation, index) => (
                       <li key={index} className="flex items-start gap-2">
+                        <span className="text-sm text-right">{recommendation}</span>
                         <div className="w-2 h-2 rounded-full bg-[#18A39E] mt-2 flex-shrink-0"></div>
-                        <span className="text-sm">{recommendation}</span>
                       </li>
                     ))}
                   </ul>
@@ -413,14 +464,7 @@ export default function IdeaValidatorPage() {
 
             {/* Action Buttons */}
             <div className="flex justify-center gap-4">
-              <Button
-                variant="outline"
-                onClick={() => {
-                  setCurrentStep(1)
-                  setAnswers({})
-                  setScore(0)
-                }}
-              >
+              <Button variant="outline" onClick={resetQuiz}>
                 إعادة التقييم
               </Button>
               <Button className="bg-[#18A39E] hover:bg-[#16918A]">حفظ النتائج</Button>

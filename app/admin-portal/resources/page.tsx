@@ -24,7 +24,7 @@ export default function ResourcesPage() {
   const [typeFilter, setTypeFilter] = useState("all")
   const [isAddModalOpen, setIsAddModalOpen] = useState(false)
 
-  // Mock resources data
+  // بيانات الموارد التجريبية
   const resources = [
     {
       id: 1,
@@ -113,17 +113,17 @@ export default function ResourcesPage() {
   })
 
   const handleDelete = (id: number) => {
-    console.log("Deleting resource:", id)
+    console.log("حذف المورد:", id)
   }
 
   const handleEdit = (id: number) => {
-    console.log("Editing resource:", id)
+    console.log("تعديل المورد:", id)
   }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900" dir="rtl">
       <div className="p-6 space-y-6">
-        {/* Header */}
+        {/* الترويسة */}
         <div className="flex flex-col gap-4">
           <div className="flex justify-between items-start">
             <div>
@@ -183,7 +183,7 @@ export default function ResourcesPage() {
             </Dialog>
           </div>
 
-          {/* Stats Cards */}
+          {/* بطاقات الإحصائيات */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Card>
               <CardContent className="p-6">

@@ -1,7 +1,7 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Target, Eye, Users, Award, Lightbulb, TrendingUp } from "lucide-react"
 
-export default function AboutPage() {
+export default function About() {
   return (
     <div className="min-h-screen bg-background" dir="rtl">
       <div className="container mx-auto px-4 py-12">

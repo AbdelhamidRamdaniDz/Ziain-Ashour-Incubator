@@ -90,7 +90,7 @@ export default function BusinessModelCanvasPage() {
   ]
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">نموذج العمل التجاري</h1>
@@ -98,19 +98,19 @@ export default function BusinessModelCanvasPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
-            <RefreshCw className="w-4 h-4 mr-2" />
+            <RefreshCw className="w-4 h-4 ml-2" />
             إعادة تعيين
           </Button>
           <Button variant="outline">
-            <Share className="w-4 h-4 mr-2" />
+            <Share className="w-4 h-4 ml-2" />
             مشاركة
           </Button>
           <Button variant="outline">
-            <Download className="w-4 h-4 mr-2" />
+            <Download className="w-4 h-4 ml-2" />
             تصدير
           </Button>
           <Button className="bg-[#18A39E] hover:bg-[#16918A] text-white">
-            <Save className="w-4 h-4 mr-2" />
+            <Save className="w-4 h-4 ml-2" />
             حفظ
           </Button>
         </div>
@@ -142,7 +142,7 @@ export default function BusinessModelCanvasPage() {
       </Card>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        {/* Left Column */}
+        {/* Right Column */}
         <div className="space-y-6">
           {canvasFields.slice(0, 3).map((field) => (
             <Card key={field.id} className={field.color}>
@@ -155,7 +155,7 @@ export default function BusinessModelCanvasPage() {
                   placeholder={field.placeholder}
                   value={canvasData[field.id as keyof typeof canvasData]}
                   onChange={(e) => updateCanvas(field.id, e.target.value)}
-                  className="min-h-[120px] resize-none"
+                  className="min-h-[120px] resize-none text-right"
                 />
               </CardContent>
             </Card>
@@ -175,14 +175,14 @@ export default function BusinessModelCanvasPage() {
                   placeholder={field.placeholder}
                   value={canvasData[field.id as keyof typeof canvasData]}
                   onChange={(e) => updateCanvas(field.id, e.target.value)}
-                  className="min-h-[120px] resize-none"
+                  className="min-h-[120px] resize-none text-right"
                 />
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {/* Right Column */}
+        {/* Left Column */}
         <div className="space-y-6">
           {canvasFields.slice(6).map((field) => (
             <Card key={field.id} className={field.color}>
@@ -195,7 +195,7 @@ export default function BusinessModelCanvasPage() {
                   placeholder={field.placeholder}
                   value={canvasData[field.id as keyof typeof canvasData]}
                   onChange={(e) => updateCanvas(field.id, e.target.value)}
-                  className="min-h-[120px] resize-none"
+                  className="min-h-[120px] resize-none text-right"
                 />
               </CardContent>
             </Card>

@@ -6,52 +6,52 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function AdminPortalPage() {
   return (
-    <div className="container py-6">
+    <div className="container py-6" dir="rtl">
       <div className="mb-8 flex flex-col gap-2">
-        <h1 className="text-3xl font-bold tracking-tight">Admin Dashboard</h1>
-        <p className="text-muted-foreground">Overview of incubator activities and key metrics</p>
+        <h1 className="text-3xl font-bold tracking-tight">لوحة التحكم</h1>
+        <p className="text-muted-foreground">نظرة عامة على أنشطة الحاضنة والمقاييس الرئيسية</p>
       </div>
 
       {/* Quick Stats */}
       <div className="grid gap-4 md:grid-cols-4">
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Total Students</CardTitle>
+            <CardTitle className="text-sm font-medium">إجمالي الطلاب</CardTitle>
             <Users className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">214</div>
-            <p className="text-xs text-muted-foreground">+12 this month</p>
+            <p className="text-xs text-muted-foreground">+12 هذا الشهر</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Active Projects</CardTitle>
+            <CardTitle className="text-sm font-medium">المشاريع النشطة</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">48</div>
-            <p className="text-xs text-muted-foreground">+5 this month</p>
+            <p className="text-xs text-muted-foreground">+5 هذا الشهر</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Pending Applications</CardTitle>
+            <CardTitle className="text-sm font-medium">الطلبات المعلقة</CardTitle>
             <FileText className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">23</div>
-            <p className="text-xs text-muted-foreground">8 new this week</p>
+            <p className="text-xs text-muted-foreground">8 جديد هذا الأسبوع</p>
           </CardContent>
         </Card>
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
-            <CardTitle className="text-sm font-medium">Unread Messages</CardTitle>
+            <CardTitle className="text-sm font-medium">الرسائل غير المقروءة</CardTitle>
             <MessageSquare className="h-4 w-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
             <div className="text-2xl font-bold">15</div>
-            <p className="text-xs text-muted-foreground">3 urgent</p>
+            <p className="text-xs text-muted-foreground">3 عاجل</p>
           </CardContent>
         </Card>
       </div>
@@ -61,16 +61,16 @@ export default function AdminPortalPage() {
         <Tabs defaultValue="overview">
           <div className="flex items-center justify-between">
             <TabsList>
-              <TabsTrigger value="overview">Overview</TabsTrigger>
-              <TabsTrigger value="students">Students</TabsTrigger>
-              <TabsTrigger value="projects">Projects</TabsTrigger>
-              <TabsTrigger value="resources">Resources</TabsTrigger>
+              <TabsTrigger value="overview">نظرة عامة</TabsTrigger>
+              <TabsTrigger value="students">الطلاب</TabsTrigger>
+              <TabsTrigger value="projects">المشاريع</TabsTrigger>
+              <TabsTrigger value="resources">الموارد</TabsTrigger>
             </TabsList>
             <select className="rounded-md border border-input bg-background px-3 py-1 text-sm ring-offset-background">
-              <option>Last 30 Days</option>
-              <option>Last Quarter</option>
-              <option>Last Year</option>
-              <option>All Time</option>
+              <option>آخر 30 يوم</option>
+              <option>الربع الأخير</option>
+              <option>السنة الماضية</option>
+              <option>كل الوقت</option>
             </select>
           </div>
 
@@ -78,8 +78,8 @@ export default function AdminPortalPage() {
             <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
               <Card>
                 <CardHeader>
-                  <CardTitle>Student Engagement</CardTitle>
-                  <CardDescription>Daily active students over time</CardDescription>
+                  <CardTitle>تفاعل الطلاب</CardTitle>
+                  <CardDescription>الطلاب النشطين يومياً عبر الزمن</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-[200px] w-full bg-muted/20"></div>
@@ -87,8 +87,8 @@ export default function AdminPortalPage() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Project Progress</CardTitle>
-                  <CardDescription>Project stages distribution</CardDescription>
+                  <CardTitle>تقدم المشاريع</CardTitle>
+                  <CardDescription>توزيع مراحل المشاريع</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-[200px] w-full bg-muted/20"></div>
@@ -96,8 +96,8 @@ export default function AdminPortalPage() {
               </Card>
               <Card>
                 <CardHeader>
-                  <CardTitle>Resource Usage</CardTitle>
-                  <CardDescription>Most used resources and tools</CardDescription>
+                  <CardTitle>استخدام الموارد</CardTitle>
+                  <CardDescription>الموارد والأدوات الأكثر استخداماً</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="h-[200px] w-full bg-muted/20"></div>
@@ -109,8 +109,8 @@ export default function AdminPortalPage() {
           <TabsContent value="students" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Student Activity</CardTitle>
-                <CardDescription>Detailed student engagement metrics</CardDescription>
+                <CardTitle>نشاط الطلاب</CardTitle>
+                <CardDescription>مقاييس تفاعل الطلاب التفصيلية</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-[400px] w-full bg-muted/20"></div>
@@ -121,8 +121,8 @@ export default function AdminPortalPage() {
           <TabsContent value="projects" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Project Analytics</CardTitle>
-                <CardDescription>Detailed project performance metrics</CardDescription>
+                <CardTitle>تحليلات المشاريع</CardTitle>
+                <CardDescription>مقاييس أداء المشاريع التفصيلية</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-[400px] w-full bg-muted/20"></div>
@@ -133,8 +133,8 @@ export default function AdminPortalPage() {
           <TabsContent value="resources" className="mt-6">
             <Card>
               <CardHeader>
-                <CardTitle>Resource Analytics</CardTitle>
-                <CardDescription>Detailed resource usage metrics</CardDescription>
+                <CardTitle>تحليلات الموارد</CardTitle>
+                <CardDescription>مقاييس استخدام الموارد التفصيلية</CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="h-[400px] w-full bg-muted/20"></div>
@@ -148,8 +148,8 @@ export default function AdminPortalPage() {
       <div className="mt-8 grid gap-6 md:grid-cols-2">
         <Card>
           <CardHeader>
-            <CardTitle>Recent Activity</CardTitle>
-            <CardDescription>Latest actions and updates</CardDescription>
+            <CardTitle>النشاط الأخير</CardTitle>
+            <CardDescription>أحدث الإجراءات والتحديثات</CardDescription>
           </CardHeader>
           <CardContent>
             <div className="space-y-4">
@@ -158,8 +158,8 @@ export default function AdminPortalPage() {
                   <Users className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">New student application received</p>
-                  <p className="text-xs text-muted-foreground">Today at 10:30 AM</p>
+                  <p className="text-sm font-medium">تم استلام طلب طالب جديد</p>
+                  <p className="text-xs text-muted-foreground">اليوم الساعة 10:30 صباحاً</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -167,8 +167,8 @@ export default function AdminPortalPage() {
                   <FileText className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">Patent application submitted for review</p>
-                  <p className="text-xs text-muted-foreground">Yesterday at 4:15 PM</p>
+                  <p className="text-sm font-medium">تم تقديم طلب براءة اختراع للمراجعة</p>
+                  <p className="text-xs text-muted-foreground">الأمس الساعة 4:15 مساءً</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -176,8 +176,8 @@ export default function AdminPortalPage() {
                   <BookOpen className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <p className="text-sm font-medium">New course added to the library</p>
-                  <p className="text-xs text-muted-foreground">2 days ago at 11:20 AM</p>
+                  <p className="text-sm font-medium">تمت إضافة دورة جديدة للمكتبة</p>
+                  <p className="text-xs text-muted-foreground">منذ يومين الساعة 11:20 صباحاً</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
@@ -185,6 +185,7 @@ export default function AdminPortalPage() {
                   <MessageSquare className="h-4 w-4 text-primary" />
                 </div>
                 <div>
+                  <p className="text-sm font-medium">رسالة جديدة من الطالب أحمد</p>
                   <p className="text-sm font-medium">New message from student Ahmed</p>
                   <p className="text-xs text-muted-foreground">2 days ago at 9:45 AM</p>
                 </div>

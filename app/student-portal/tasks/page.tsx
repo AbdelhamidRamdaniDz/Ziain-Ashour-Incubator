@@ -8,6 +8,10 @@ import { Badge } from "@/components/ui/badge"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Calendar, CheckCircle, Plus, Search, Filter, User } from "lucide-react"
+import { Dialog, DialogFooter, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogTrigger } from "@/components/ui/dialog"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 
 export default function TasksPage() {
   const [searchQuery, setSearchQuery] = useState("")
@@ -97,16 +101,88 @@ export default function TasksPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">المهام</h1>
           <p className="text-gray-600 dark:text-gray-400 mt-2">إدارة وتتبع مهام المشاريع والأنشطة</p>
         </div>
-        <Button className="bg-[#18A39E] hover:bg-[#16918A] text-white">
-          <Plus className="w-4 h-4 mr-2" />
-          مهمة جديدة
-        </Button>
+        <Dialog>
+          <DialogTrigger asChild>
+            <Button className="bg-[#18A39E] hover:bg-[#16918A] text-white">
+              <Plus className="w-4 h-4 ml-2" />
+              مهمة جديدة
+            </Button>
+          </DialogTrigger>
+          <DialogContent className="sm:max-w-[500px]">
+            <DialogHeader>
+              <DialogTitle>إضافة مهمة جديدة</DialogTitle>
+              <DialogDescription>
+                أدخل تفاصيل المهمة الجديدة في النموذج أدناه
+              </DialogDescription>
+            </DialogHeader>
+            <form className="space-y-4">
+              <div className="space-y-2">
+                <Label htmlFor="title">عنوان المهمة</Label>
+                <Input id="title" placeholder="أدخل عنوان المهمة" />
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="description">الوصف</Label>
+                <Textarea 
+                  id="description" 
+                  placeholder="أدخل وصف المهمة"
+                  className="h-20"
+                />
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="priority">الأولوية</Label>
+                  <Select>
+                    <SelectTrigger>
+                      <SelectValue placeholder="اختر الأولوية" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="high">عالية</SelectItem>
+                      <SelectItem value="medium">متوسطة</SelectItem>
+                      <SelectItem value="low">منخفضة</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="dueDate">الموعد النهائي</Label>
+                  <Input type="date" id="dueDate" />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="assignedTo">الشخص المكلف</Label>
+                  <Input id="assignedTo" placeholder="اسم الشخص المكلف" />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="project">المشروع</Label>
+                  <Input id="project" placeholder="اسم المشروع" />
+                </div>
+              </div>
+
+              <DialogFooter className="mt-6">
+                <Button variant="outline" type="button">
+                  إلغاء
+                </Button>
+                <Button 
+                  type="submit"
+                  className="bg-[#18A39E] hover:bg-[#16918A] text-white"
+                >
+                  إضافة المهمة
+                </Button>
+              </DialogFooter>
+            </form>
+          </DialogContent>
+        </Dialog>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
@@ -122,36 +198,35 @@ export default function TasksPage() {
             <TabsContent value="all-tasks" className="space-y-4">
               <div className="flex flex-col sm:flex-row gap-4">
                 <div className="relative flex-1">
-                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+                  <Search className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
                   <Input
                     placeholder="البحث في المهام..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="pl-10"
+                    className="pr-10"
                   />
                 </div>
                 <Button variant="outline">
-                  <Filter className="w-4 h-4 mr-2" />
+                  <Filter className="w-4 h-4 ml-2" />
                   تصفية
                 </Button>
               </div>
-
               <div className="space-y-4">
                 {filteredTasks.map((task) => (
                   <Card key={task.id} className="hover:shadow-md transition-shadow">
                     <CardHeader>
-                      <div className="flex justify-between items-start">
-                        <div className="flex items-start gap-3">
+                      <div className="flex flex-row-reverse justify-between items-start">
+                        <div className="flex flex-row-reverse items-start gap-3">
                           <Checkbox className="mt-1" />
-                          <div className="space-y-2">
+                          <div className="space-y-2 text-right">
                             <CardTitle className="text-xl">{task.title}</CardTitle>
                             <CardDescription>{task.description}</CardDescription>
-                            <div className="flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                              <span className="flex items-center gap-1">
+                            <div className="flex flex-row-reverse items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                              <span className="flex flex-row-reverse items-center gap-1">
                                 <User className="w-4 h-4" />
                                 {task.assignedTo}
                               </span>
-                              <span className="flex items-center gap-1">
+                              <span className="flex flex-row-reverse items-center gap-1">
                                 <Calendar className="w-4 h-4" />
                                 {task.dueDate}
                               </span>
@@ -160,8 +235,8 @@ export default function TasksPage() {
                           </div>
                         </div>
                         <div className="flex gap-2">
-                          <Badge className={getPriorityColor(task.priority)}>{task.priority}</Badge>
                           <Badge className={getStatusColor(task.status)}>{task.status}</Badge>
+                          <Badge className={getPriorityColor(task.priority)}>{task.priority}</Badge>
                         </div>
                       </div>
                     </CardHeader>
@@ -169,8 +244,8 @@ export default function TasksPage() {
                       <div className="space-y-3">
                         <div>
                           <div className="flex justify-between text-sm mb-1">
-                            <span>التقدم</span>
                             <span>{task.progress}%</span>
+                            <span>التقدم</span>
                           </div>
                           <div className="w-full bg-gray-200 rounded-full h-2 dark:bg-gray-700">
                             <div
@@ -179,14 +254,14 @@ export default function TasksPage() {
                             ></div>
                           </div>
                         </div>
-                        <div className="flex justify-between items-center">
+                        <div className="flex flex-row-reverse justify-between items-center">
                           <Badge variant="outline">{task.category}</Badge>
                           <div className="flex gap-2">
-                            <Button size="sm" variant="outline">
-                              تحرير
-                            </Button>
                             <Button size="sm" className="bg-[#18A39E] hover:bg-[#16918A]">
                               عرض التفاصيل
+                            </Button>
+                            <Button size="sm" variant="outline">
+                              تحرير
                             </Button>
                           </div>
                         </div>
@@ -283,10 +358,10 @@ export default function TasksPage() {
               {tasks
                 .filter((task) => task.priority === "High" && task.status !== "Completed")
                 .map((task) => (
-                  <div key={task.id} className="border-l-4 border-red-500 pl-4">
+                  <div key={task.id} className="border-r-4 border-red-500 pr-4">
                     <h4 className="font-medium text-sm">{task.title}</h4>
                     <p className="text-xs text-gray-600 dark:text-gray-400">{task.dueDate}</p>
-                    <Badge size="sm" className="mt-1 bg-red-100 text-red-800">
+                    <Badge className="mt-1 bg-red-100 text-red-800">
                       عاجل
                     </Badge>
                   </div>

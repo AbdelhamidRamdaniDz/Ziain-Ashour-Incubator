@@ -67,7 +67,7 @@ export default function FinancialProjectionsPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">التوقعات المالية</h1>
@@ -75,25 +75,25 @@ export default function FinancialProjectionsPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
-            <RefreshCw className="w-4 h-4 mr-2" />
+            <RefreshCw className="w-4 h-4 ml-2" />
             إعادة تعيين
           </Button>
           <Button variant="outline">
-            <Share className="w-4 h-4 mr-2" />
+            <Share className="w-4 h-4 ml-2" />
             مشاركة
           </Button>
           <Button variant="outline">
-            <Download className="w-4 h-4 mr-2" />
+            <Download className="w-4 h-4 ml-2" />
             تصدير
           </Button>
           <Button className="bg-[#18A39E] hover:bg-[#16918A] text-white">
-            <Save className="w-4 h-4 mr-2" />
+            <Save className="w-4 h-4 ml-2" />
             حفظ
           </Button>
         </div>
       </div>
 
-      <Tabs defaultValue="input" className="w-full">
+      <Tabs defaultValue="input" className="w-full" dir="rtl">
         <TabsList className="grid w-full grid-cols-4">
           <TabsTrigger value="input">إدخال البيانات</TabsTrigger>
           <TabsTrigger value="projections">التوقعات</TabsTrigger>

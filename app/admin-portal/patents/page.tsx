@@ -23,7 +23,7 @@ export default function PatentsPage() {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 10
 
-  // Mock patent data
+  // بيانات براءات الاختراع
   const patents = [
     {
       id: 1,
@@ -103,17 +103,17 @@ export default function PatentsPage() {
   const paginatedPatents = filteredPatents.slice(startIndex, startIndex + itemsPerPage)
 
   const handleApprove = (id: number) => {
-    console.log("Approving patent:", id)
+    console.log("تم قبول البراءة:", id)
   }
 
   const handleReject = (id: number) => {
-    console.log("Rejecting patent:", id)
+    console.log("تم رفض البراءة:", id)
   }
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900" dir="rtl">
       <div className="p-6 space-y-6">
-        {/* Header */}
+        {/* العنوان */}
         <div className="flex flex-col gap-4">
           <div>
             <h1 className="text-3xl font-bold text-gray-900 dark:text-white">إدارة براءات الاختراع</h1>
@@ -122,7 +122,7 @@ export default function PatentsPage() {
             </p>
           </div>
 
-          {/* Stats Cards */}
+          {/* بطاقات الإحصائيات */}
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             <Card>
               <CardContent className="p-6">
@@ -182,7 +182,7 @@ export default function PatentsPage() {
           </div>
         </div>
 
-        {/* Filters */}
+        {/* الفلاتر */}
         <Card>
           <CardHeader>
             <CardTitle>البحث والتصفية</CardTitle>

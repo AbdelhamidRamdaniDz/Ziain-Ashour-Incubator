@@ -64,17 +64,9 @@ export function MainNav() {
                 <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                   الرئيسية
                 </Link>
-                <Link href="/about" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                  من نحن
-                </Link>
+
                 <Link href="/news" onClick={() => setIsOpen(false)} className="text-lg font-medium">
                   الأخبار
-                </Link>
-                <Link href="/partners" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                  شركاؤنا
-                </Link>
-                <Link href="/contact" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                  تواصل معنا
                 </Link>
                 {isLoggedIn && (
                   <>
@@ -132,28 +124,8 @@ export function MainNav() {
               </>
             )}
             <NavigationMenuItem>
-              <Link href="/contact" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>تواصل معنا</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/partners" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>شركاؤنا</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
               <Link href="/news" legacyBehavior passHref>
                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأخبار</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/about" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>من نحن</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <Link href="/" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>الرئيسية</NavigationMenuLink>
               </Link>
             </NavigationMenuItem>
           </NavigationMenuList>
@@ -162,11 +134,17 @@ export function MainNav() {
         </div>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-2">
-            <Sun className="h-4 w-4" />
-            <Switch checked={theme === "dark"} onCheckedChange={toggleTheme} aria-label="تبديل الوضع المظلم" />
-            <Moon className="h-4 w-4" />
-          </div>
+        <div className="flex items-center gap-2">
+          <Sun className="h-4 w-4" />
+          <Switch
+            dir="ltr"
+            checked={theme === "dark"}
+            onCheckedChange={toggleTheme}
+            aria-label="تبديل الوضع المظلم"
+          />
+          <Moon className="h-4 w-4" />
+        </div>
+
           {/* Auth Buttons */}
           {!isLoggedIn && (
             <div className="hidden md:flex items-center gap-2">

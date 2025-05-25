@@ -131,26 +131,26 @@ export function StudentSidebar({ className, isCollapsed, onToggle }: SidebarProp
   ]  
 
   return (
-    <div className={cn("relative flex flex-col border-r bg-background", className)}>
+    <div className={cn("relative flex flex-col border-l bg-background", className)} dir="rtl">
       <div className="flex h-14 items-center px-4">
         <div className="flex w-full items-center justify-between">
-          {!isCollapsed && <span className="text-lg font-semibold">Student Portal</span>}
-          <Button variant="ghost" size="icon" className="ml-auto h-8 w-8" onClick={onToggle}>
+          {!isCollapsed && <span className="text-lg font-semibold">بوابة الطالب</span>}
+          <Button variant="ghost" size="icon" className="mr-auto h-8 w-8" onClick={onToggle}>
             {isCollapsed ? (
-              <PanelRight className="h-4 w-4" />
-            ) : (
               <PanelLeft className="h-4 w-4" />
+            ) : (
+              <PanelRight className="h-4 w-4" />
             )}
-            <span className="sr-only">Toggle Sidebar</span>
+            <span className="sr-only">تبديل الشريط الجانبي</span>
           </Button>
         </div>
       </div>
       <div className="px-4 py-2">
         <div className="relative">
-          <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
+          <Search className="absolute right-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <input
-            placeholder="Search..."
-            className="w-full rounded-md border border-input bg-background pl-8 pr-2 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+            placeholder="بحث..."
+            className="w-full rounded-md border border-input bg-background pr-8 pl-2 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           />
         </div>
       </div>

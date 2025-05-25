@@ -61,7 +61,7 @@ export default function AdminSettingsPage() {
         </div>
 
         <div className="space-y-6">
-          {/* General Settings */}
+          {/* الإعدادات العامة */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -108,7 +108,7 @@ export default function AdminSettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Contact Information */}
+          {/* معلومات التواصل */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -153,7 +153,7 @@ export default function AdminSettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Logo Upload */}
+          {/* شعار المنصة */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
@@ -180,7 +180,7 @@ export default function AdminSettingsPage() {
             </CardContent>
           </Card>
 
-          {/* Feature Toggles */}
+          {/* إعدادات الميزات */}
           <Card>
             <CardHeader>
               <CardTitle className="flex items-center gap-2">

@@ -2,175 +2,101 @@ import Link from "next/link"
 import { Facebook, Instagram, Linkedin, Twitter, Github } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
-const developers = [
-  {
-    name: "رمضاني عبدالحميد",
-    role: "Full-stack devloper",
-    avatar: "مأ",
-    github: "https://github.com/AbdelhamidRamdaniDz",
-    numberPhone: "0666564435",
-  },
-  {
-    name: "مزيود علي سفيان",
-    role: "Front-end devloper",
-    avatar: "فز",
-    github: "https://github.com/Corupe",
-    numberPhone: "0549600502",
-  },
-  {
-    name: "أوشفون محمد هشام",
-    role: "UI/UX designer",
-    avatar: "يع",
-    github: "https://github.com",
-    numberPhone: "0655919776",
-  },
-  {
-    name: "برابح اياد حاتم",
-    role: "Back-end devloper",
-    avatar: "أس",
-    github: "https://github.com/iyadber",
-    numberPhone: "0699993047",
-  },
-  {
-    name: "طارق لباز",
-    role: "Front-end devloper",
-    avatar: "أس",
-    github: "https://github.com",
-    numberPhone: "0667587718 ",
-  },
-]
+
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background" dir="rtl">
-      <div className="container py-12">
-        {/* Platform Developers Section */}
-        <div className="mb-12">
-          <h3 className="text-2xl font-bold text-center mb-8">مطورو المنصة</h3>
-          <div className="flex flex-wrap justify-center gap-6">
-            {developers.map((developer, index) => (
-              <div
-                key={index}
-                className="flex items-center gap-4 p-4 border rounded-lg bg-muted/30 hover:bg-muted/50 transition-colors min-w-[280px]"
-              >
-                <Avatar className="w-12 h-12">
-                  <AvatarImage src="/placeholder.svg?height=48&width=48" />
-                  <AvatarFallback className="text-sm">{developer.avatar}</AvatarFallback>
-                </Avatar>
-                <div className="flex-1">
-                  <h4 className="font-semibold">{developer.name}</h4>
-                  <p className="text-muted-foreground text-sm">{developer.role}</p>
-                </div>
-                <div className="flex gap-2">
-                  <Link
-                    href={developer.github}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Github className="h-4 w-4" />
-                    <span className="sr-only">GitHub</span>
-                  </Link>
-                  <Link
-                    href={developer.numberPhone}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <Linkedin className="h-4 w-4" />
-                    <span className="sr-only">LinkedIn</span>
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+    <footer className="bg-gradient-to-t from-[#18A39E]/10 via-background to-background border-t" dir="rtl">
+      <div className="container py-16">
 
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
           <div>
-            <h3 className="mb-4 text-lg font-semibold">عن الحاضنة</h3>
-            <p className="text-sm text-muted-foreground">
-              حاضنة جامعة زيان عاشور تقدم الموارد والإرشاد والدعم لمساعدة الطلاب على تحويل الأفكار المبتكرة إلى مشاريع
-              ناجحة.
+            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">عن الحاضنة</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              حاضنة جامعة زيان عاشور توفر بيئة محفزة للابتكار، وتقدم الموارد والإرشاد والدعم لتحويل الأفكار إلى مشاريع ناجحة.
             </p>
           </div>
           <div>
-            <h3 className="mb-4 text-lg font-semibold">روابط سريعة</h3>
+            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">روابط سريعة</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/" className="hover:text-[#18A39E] text-muted-foreground transition">
                   الرئيسية
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/about" className="hover:text-[#18A39E] text-muted-foreground transition">
                   من نحن
                 </Link>
               </li>
               <li>
-                <Link href="/news" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/news" className="hover:text-[#18A39E] text-muted-foreground transition">
                   الأخبار
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/contact" className="hover:text-[#18A39E] text-muted-foreground transition">
                   تواصل معنا
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 text-lg font-semibold">الدعم</h3>
+            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">الدعم</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/privacy" className="hover:text-[#18A39E] text-muted-foreground transition">
                   سياسة الخصوصية
                 </Link>
               </li>
               <li>
-                <Link href="/terms" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/terms" className="hover:text-[#18A39E] text-muted-foreground transition">
                   شروط الاستخدام
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/faq" className="hover:text-[#18A39E] text-muted-foreground transition">
                   الأسئلة الشائعة
                 </Link>
               </li>
               <li>
-                <Link href="/help" className="text-muted-foreground hover:text-foreground transition-colors">
+                <Link href="/help" className="hover:text-[#18A39E] text-muted-foreground transition">
                   المساعدة
                 </Link>
               </li>
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 text-lg font-semibold">تابعنا</h3>
-            <div className="flex space-x-4 space-x-reverse">
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Facebook className="h-5 w-5" />
+            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">تابعنا</h3>
+            <div className="flex gap-4 justify-start mb-4">
+              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
+                <Facebook className="h-6 w-6" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="h-5 w-5" />
+              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
+                <Twitter className="h-6 w-6" />
                 <span className="sr-only">Twitter</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Instagram className="h-5 w-5" />
+              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
+                <Instagram className="h-6 w-6" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Linkedin className="h-5 w-5" />
+              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
+                <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </div>
-            <p className="mt-4 text-sm text-muted-foreground">جامعة زيان عاشور، الجلفة، الجزائر</p>
-            <p className="text-sm text-muted-foreground">البريد: incubator@univ-djelfa.dz</p>
+            <div className="text-sm text-muted-foreground space-y-1">
+              <p>جامعة زيان عاشور، الجلفة، الجزائر</p>
+              <p>البريد: <a href="mailto:incubator@univ-djelfa.dz" className="hover:text-[#18A39E] transition">incubator@univ-djelfa.dz</a></p>
+            </div>
           </div>
         </div>
-        <div className="mt-8 border-t pt-8 text-center text-sm text-muted-foreground">
-          <p>© {new Date().getFullYear()} حاضنة جامعة زيان عاشور. جميع الحقوق محفوظة.</p>
+        <div className="border-t pt-8 text-center text-sm text-muted-foreground">
+          <p>
+            © {new Date().getFullYear()} حاضنة جامعة زيان عاشور. جميع الحقوق محفوظة.
+          </p>
         </div>
       </div>
     </footer>

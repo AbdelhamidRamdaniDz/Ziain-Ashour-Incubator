@@ -14,7 +14,7 @@ export default function AdminMessagesPage() {
   const [newMessage, setNewMessage] = useState("")
   const [searchQuery, setSearchQuery] = useState("")
 
-  // Mock users data
+  // بيانات المستخدمين
   const users = [
     {
       id: 1,
@@ -63,7 +63,7 @@ export default function AdminMessagesPage() {
     },
   ]
 
-  // Mock messages data
+  // بيانات الرسائل
   const messages = [
     {
       id: 1,
@@ -113,8 +113,8 @@ export default function AdminMessagesPage() {
 
   const handleSendMessage = () => {
     if (newMessage.trim()) {
-      // Here you would typically send the message to your backend
-      console.log("Sending message:", newMessage)
+      // هنا يمكنك إرسال الرسالة إلى الخادم
+      console.log("جاري إرسال الرسالة:", newMessage)
       setNewMessage("")
     }
   }
@@ -128,7 +128,7 @@ export default function AdminMessagesPage() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-[calc(100vh-200px)]">
-          {/* Users List */}
+          {/* قائمة المستخدمين */}
           <Card className="lg:col-span-1">
             <CardHeader className="pb-3">
               <CardTitle className="text-lg">المحادثات</CardTitle>
@@ -181,11 +181,11 @@ export default function AdminMessagesPage() {
             </CardContent>
           </Card>
 
-          {/* Chat Area */}
+          {/* منطقة المحادثة */}
           <Card className="lg:col-span-2 flex flex-col">
             {selectedUserData ? (
               <>
-                {/* Chat Header */}
+                {/* رأس المحادثة */}
                 <CardHeader className="border-b">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
@@ -214,7 +214,7 @@ export default function AdminMessagesPage() {
                   </div>
                 </CardHeader>
 
-                {/* Messages */}
+                {/* الرسائل */}
                 <CardContent className="flex-1 p-0">
                   <ScrollArea className="h-[400px] p-4">
                     <div className="space-y-4">

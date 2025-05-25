@@ -76,7 +76,7 @@ export default function PersonaGeneratorPage() {
   }
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6" dir="rtl">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">مولد الشخصيات</h1>
@@ -86,15 +86,15 @@ export default function PersonaGeneratorPage() {
         </div>
         <div className="flex gap-2">
           <Button variant="outline">
-            <RefreshCw className="w-4 h-4 mr-2" />
+            <RefreshCw className="w-4 h-4 ml-2" />
             إعادة تعيين
           </Button>
           <Button variant="outline">
-            <Share className="w-4 h-4 mr-2" />
+            <Share className="w-4 h-4 ml-2" />
             مشاركة
           </Button>
           <Button variant="outline">
-            <Download className="w-4 h-4 mr-2" />
+            <Download className="w-4 h-4 ml-2" />
             تصدير
           </Button>
         </div>
@@ -303,7 +303,7 @@ export default function PersonaGeneratorPage() {
                         <p className="text-sm text-gray-600 dark:text-gray-400">{currentPersona.bio}</p>
                       )}
                       {currentPersona.quote && (
-                        <blockquote className="border-l-4 border-[#18A39E] pl-4 italic text-sm">
+                        <blockquote className="border-r-4 border-[#18A39E] pr-4 italic text-sm">
                           "{currentPersona.quote}"
                         </blockquote>
                       )}
@@ -319,7 +319,7 @@ export default function PersonaGeneratorPage() {
                 className="w-full bg-[#18A39E] hover:bg-[#16918A] text-white"
                 disabled={!currentPersona.name}
               >
-                <Save className="w-4 h-4 mr-2" />
+                <Save className="w-4 h-4 ml-2" />
                 حفظ الشخصية
               </Button>
             </div>

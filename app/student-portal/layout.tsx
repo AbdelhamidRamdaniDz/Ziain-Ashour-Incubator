@@ -10,7 +10,7 @@ export default function StudentPortalLayout({ children }: { children: React.Reac
   const [isCollapsed, setIsCollapsed] = useState(false)
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex min-h-screen flex-col" dir="rtl">
       <div className="flex flex-1">
         <StudentSidebar
           isCollapsed={isCollapsed}
@@ -18,7 +18,7 @@ export default function StudentPortalLayout({ children }: { children: React.Reac
           className={cn("fixed inset-y-0 z-30 hidden h-full w-56 flex-col md:flex", isCollapsed && "w-[70px]")}
         />
         <main
-          className={cn("flex-1 transition-all duration-200 ease-in-out", isCollapsed ? "md:pl-[70px]" : "md:pl-56")}
+          className={cn("flex-1 transition-all duration-200 ease-in-out", isCollapsed ? "md:pr-[70px]" : "md:pr-56")}
         >
           {children}
         </main>

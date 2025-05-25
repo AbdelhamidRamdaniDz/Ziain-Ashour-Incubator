@@ -16,7 +16,7 @@ export default function AdminStudentsPage() {
   const [statusFilter, setStatusFilter] = useState("all")
   const [selectedStudent, setSelectedStudent] = useState(null)
 
-  // Mock students data
+  // بيانات الطلاب
   const students = [
     {
       id: 1,
@@ -117,7 +117,7 @@ export default function AdminStudentsPage() {
           </div>
         </div>
 
-        {/* Filters and Search */}
+        {/* التصفية والبحث */}
         <Card className="mb-6">
           <CardContent className="p-4">
             <div className="flex flex-col sm:flex-row gap-4">
@@ -147,7 +147,7 @@ export default function AdminStudentsPage() {
           </CardContent>
         </Card>
 
-        {/* Students Table */}
+        {/* جدول الطلاب */}
         <Card>
           <CardHeader>
             <CardTitle>قائمة الطلاب ({filteredStudents.length})</CardTitle>
