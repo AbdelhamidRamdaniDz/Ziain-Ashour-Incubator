@@ -10,20 +10,20 @@
     --card-foreground: 222.2 84% 4.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-    --primary: 174 74% 37%;
+    --primary: 173 65% 40%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 174 50% 80%;
+    --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 174 50% 80%;
+    --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 174 74% 37%;
-    --radius: 0.75rem;
+    --ring: 173 65% 40%;
+    --radius: 0.5rem;
   }
 
   .dark {
@@ -33,19 +33,19 @@
     --card-foreground: 210 40% 98%;
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-    --primary: 174 74% 37%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 174 50% 30%;
+    --primary: 173 65% 40%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-    --accent: 174 50% 30%;
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 174 74% 37%;
+    --ring: 173 65% 40%;
   }
 }
 
@@ -56,4 +56,94 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* RTL Specific Styles */
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] .prose {
+  text-align: right;
+}
+
+[dir="rtl"] .prose h1,
+[dir="rtl"] .prose h2,
+[dir="rtl"] .prose h3,
+[dir="rtl"] .prose h4,
+[dir="rtl"] .prose h5,
+[dir="rtl"] .prose h6 {
+  text-align: right;
+}
+
+[dir="rtl"] .prose ul,
+[dir="rtl"] .prose ol {
+  padding-right: 1.5em;
+  padding-left: 0;
+}
+
+[dir="rtl"] .prose blockquote {
+  border-right: 4px solid var(--border);
+  border-left: none;
+  padding-right: 1em;
+  padding-left: 0;
+}
+
+[dir="rtl"] .prose table {
+  text-align: right;
+}
+
+[dir="rtl"] .prose th,
+[dir="rtl"] .prose td {
+  text-align: right;
+}
+
+/* Fix for form elements */
+[dir="rtl"] input,
+[dir="rtl"] textarea,
+[dir="rtl"] select {
+  text-align: right;
+}
+
+/* Fix for navigation items */
+[dir="rtl"] .navigation-menu {
+  direction: rtl;
+}
+
+/* Fix for dropdowns */
+[dir="rtl"] .dropdown-menu {
+  text-align: right;
+}
+
+/* Fix for buttons with icons */
+[dir="rtl"] .button-icon {
+  flex-direction: row-reverse;
+}
+
+/* Fix for lists */
+[dir="rtl"] ul,
+[dir="rtl"] ol {
+  padding-right: 1.5em;
+  padding-left: 0;
+}
+
+/* Fix for margins and paddings */
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Fix for flex items */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+/* Fix for grid items */
+[dir="rtl"] .grid {
+  direction: rtl;
 }

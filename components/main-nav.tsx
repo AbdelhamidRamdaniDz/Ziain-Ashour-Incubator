@@ -14,25 +14,78 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Menu, Moon, Sun } from "lucide-react"
+import { Menu, Moon, Sun, Globe, ChevronDown } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { LanguageToggle } from "./language-toggle"
+import { ModeToggle } from "./mode-toggle"
+import { UserNav } from "./user-nav"
+
+const languages = [
+  { code: "ar", name: "العربية", flag: "🇸🇦" },
+  { code: "fr", name: "Français", flag: "🇫🇷" },
+  { code: "en", name: "English", flag: "🇬🇧" },
+]
+
+const mainMenuItems = [
+  {
+    title: "الرئيسية",
+    href: "/",
+  },
+  {
+    title: "عن الحاضنة",
+    href: "/about",
+  },
+  {
+    title: "الخدمات",
+    href: "/services",
+    submenu: [
+      { title: "احتضان المشاريع", href: "/services/incubation" },
+      { title: "التدريب والتطوير", href: "/services/training" },
+      { title: "الاستشارات", href: "/services/consulting" },
+      { title: "التمويل", href: "/services/funding" },
+    ],
+  },
+  {
+    title: "الموارد",
+    href: "/resources",
+    submenu: [
+      { title: "المدونة", href: "/blog" },
+      { title: "الوثائق", href: "/documents" },
+      { title: "الأدلة", href: "/guides" },
+      { title: "الشركاء", href: "/partners" },
+    ],
+  },
+  {
+    title: "الأخبار",
+    href: "/news",
+  },
+  {
+    title: "تواصل معنا",
+    href: "/contact",
+  },
+]
 
 export function MainNav() {
   const pathname = usePathname()
   const { theme, setTheme } = useTheme()
   const [isOpen, setIsOpen] = React.useState(false)
+  const [currentLang, setCurrentLang] = React.useState("ar")
 
   const isLoggedIn = pathname.includes("/student-portal") || pathname.includes("/admin-portal")
 
-  const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark")
+  const handleLanguageChange = (langCode: string) => {
+    setCurrentLang(langCode)
+    // Here you would typically implement language switching logic
   }
 
   return (
-    <header
-      className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60"
-      dir="rtl"
-    >
-      <div className="container flex h-16 items-center justify-between w-full">
+    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+      <div className="container flex h-16 items-center justify-between">
         <div className="flex items-center gap-6 md:gap-10">
           {/* Logo Area */}
           <Link href="/" className="flex items-center gap-3">
@@ -54,96 +107,98 @@ export function MainNav() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="pl-0" dir="rtl">
-            <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
-              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
-                <img src="/faviconV2.png" alt="Logo" className="h-10 w-10 object-contain" />
-              </div>
-              <span className="text-xl font-bold text-primary">حاضنة</span>
-            </Link>
+              <Link href="/" className="flex items-center gap-3" onClick={() => setIsOpen(false)}>
+                <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
+                  <img src="/faviconV2.png" alt="Logo" className="h-10 w-10 object-contain" />
+                </div>
+                <span className="text-xl font-bold text-primary">حاضنة</span>
+              </Link>
               <div className="mt-8 flex flex-col space-y-4">
-                <Link href="/" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                  الرئيسية
-                </Link>
-
-                <Link href="/news" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                  الأخبار
-                </Link>
+                {mainMenuItems.map((item) => (
+                  <div key={item.href}>
+                    {item.submenu ? (
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" className="w-full justify-between">
+                            {item.title}
+                            <ChevronDown className="h-4 w-4" />
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end" className="w-48">
+                          {item.submenu.map((subItem) => (
+                            <DropdownMenuItem key={subItem.href} asChild>
+                              <Link href={subItem.href} onClick={() => setIsOpen(false)}>
+                                {subItem.title}
+                              </Link>
+                            </DropdownMenuItem>
+                          ))}
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className="text-lg font-medium block"
+                      >
+                        {item.title}
+                      </Link>
+                    )}
+                  </div>
+                ))}
                 {isLoggedIn && (
                   <>
-                    <Link href="/resources/courses" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                      الدورات
+                    <Link href="/student-portal" onClick={() => setIsOpen(false)} className="text-lg font-medium">
+                      بوابة الطلاب
                     </Link>
-                    <Link href="/resources/tools" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                      الأدوات
-                    </Link>
-                    <Link href="/mentors" onClick={() => setIsOpen(false)} className="text-lg font-medium">
-                      المرشدون
+                    <Link href="/admin-portal" onClick={() => setIsOpen(false)} className="text-lg font-medium">
+                      بوابة الإدارة
                     </Link>
                   </>
                 )}
-                <div className="pt-4 space-y-2">
-                  {!isLoggedIn && (
-                    <>
-                      <Link href="/login" onClick={() => setIsOpen(false)}>
-                        <Button variant="outline" className="w-full">
-                          تسجيل الدخول
-                        </Button>
-                      </Link>
-                      <Link href="/register" onClick={() => setIsOpen(false)}>
-                        <Button className="w-full">قدّم مشروعك</Button>
-                      </Link>
-                    </>
-                  )}
-                </div>
               </div>
             </SheetContent>
           </Sheet>
 
           {/* Desktop Menu */}
-        <NavigationMenu  className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2"
-          style={{ width: 'auto' }}
-        >
-          <NavigationMenuList>
-            {isLoggedIn && (
-              <>
-                <NavigationMenuItem>
-                  <Link href="/mentors" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>المرشدون</NavigationMenuLink>
-                  </Link>
+          <NavigationMenu className="hidden md:flex">
+            <NavigationMenuList>
+              {[...mainMenuItems].reverse().map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  {item.submenu ? (
+                    <DropdownMenu dir="rtl">
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" className={navigationMenuTriggerStyle()}>
+                          {item.title}
+                          <ChevronDown className="h-4 w-4 ml-1" />
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="start" className="w-48" dir="rtl">
+                        {[...item.submenu].reverse().map((subItem) => (
+                          <DropdownMenuItem key={subItem.href} asChild>
+                            <Link href={subItem.href}>{subItem.title}</Link>
+                          </DropdownMenuItem>
+                        ))}
+                      </DropdownMenuContent>
+                    </DropdownMenu>
+                  ) : (
+                    <Link href={item.href} legacyBehavior passHref>
+                      <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                        {item.title}
+                      </NavigationMenuLink>
+                    </Link>
+                  )}
                 </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/resources/tools" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأدوات</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/resources/courses" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>الدورات</NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-              </>
-            )}
-            <NavigationMenuItem>
-              <Link href="/news" legacyBehavior passHref>
-                <NavigationMenuLink className={navigationMenuTriggerStyle()}>الأخبار</NavigationMenuLink>
-              </Link>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
-
+              ))}
+            </NavigationMenuList>
+          </NavigationMenu>
         </div>
 
         <div className="flex items-center gap-4">
-        <div className="flex items-center gap-2">
-          <Sun className="h-4 w-4" />
-          <Switch
-            dir="ltr"
-            checked={theme === "dark"}
-            onCheckedChange={toggleTheme}
-            aria-label="تبديل الوضع المظلم"
-          />
-          <Moon className="h-4 w-4" />
-        </div>
+          {/* Language Switcher */}
+          <LanguageToggle />
+
+          {/* Theme Toggle */}
+          <ModeToggle />
 
           {/* Auth Buttons */}
           {!isLoggedIn && (
@@ -157,8 +212,6 @@ export function MainNav() {
             </div>
           )}
 
-          {/* Dark Mode Toggle */}
-
           {isLoggedIn && (
             <div className="hidden items-center gap-2 lg:flex">
               <Link href="/student-portal">
@@ -167,8 +220,11 @@ export function MainNav() {
               <Link href="/admin-portal">
                 <Button variant="ghost">بوابة الإدارة</Button>
               </Link>
+              <UserNav />
             </div>
           )}
+
+          {/* User Navigation */}
         </div>
       </div>
     </header>

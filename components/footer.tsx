@@ -1,99 +1,130 @@
+"use client"
+
+import { motion } from "framer-motion"
 import Link from "next/link"
-import { Facebook, Instagram, Linkedin, Twitter, Github } from "lucide-react"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Facebook, Instagram, Linkedin, Mail, Twitter } from "lucide-react"
 
+const footerLinks = [
+  {
+    title: "روابط سريعة",
+    links: [
+      { label: "الرئيسية", href: "/" },
+      { label: "عن الحاضنة", href: "/about" },
+      { label: "الخدمات", href: "/services" },
+      { label: "الأخبار", href: "/news" },
+      { label: "تواصل معنا", href: "/contact" },
+    ],
+  },
+  {
+    title: "الخدمات",
+    links: [
+      { label: "احتضان المشاريع", href: "/services/incubation" },
+      { label: "التدريب والتطوير", href: "/services/training" },
+      { label: "الاستشارات", href: "/services/consulting" },
+      { label: "التمويل", href: "/services/funding" },
+      { label: "المرشدون", href: "/mentors" },
+    ],
+  },
+  {
+    title: "الموارد",
+    links: [
+      { label: "المدونة", href: "/blog" },
+      { label: "الأسئلة الشائعة", href: "/faq" },
+      { label: "الوثائق", href: "/documents" },
+      { label: "الأدلة", href: "/guides" },
+      { label: "الشركاء", href: "/partners" },
+    ],
+  },
+]
 
+const socialLinks = [
+  { icon: Facebook, href: "https://facebook.com", label: "Facebook" },
+  { icon: Twitter, href: "https://twitter.com", label: "Twitter" },
+  { icon: Instagram, href: "https://instagram.com", label: "Instagram" },
+  { icon: Linkedin, href: "https://linkedin.com", label: "LinkedIn" },
+]
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-t from-[#18A39E]/10 via-background to-background border-t" dir="rtl">
-      <div className="container py-16">
-
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-10">
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">عن الحاضنة</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">
-              حاضنة جامعة زيان عاشور توفر بيئة محفزة للابتكار، وتقدم الموارد والإرشاد والدعم لتحويل الأفكار إلى مشاريع ناجحة.
+    <footer className="bg-muted/30 border-t" dir="rtl">
+      <div className="container py-12">
+        <div className="grid gap-12 lg:grid-cols-4">
+          {/* Logo and Description */}
+          <div className="space-y-6">
+            <Link href="/" className="flex items-center gap-3">
+              <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center overflow-hidden">
+                <img src="/faviconV2.png" alt="Logo" className="h-10 w-10 object-contain" />
+              </div>
+              <span className="text-xl font-bold text-primary">حاضنة</span>
+            </Link>
+            <p className="text-muted-foreground text-right">
+              نساعد رواد الأعمال على تطوير أفكارهم وتحويلها إلى مشاريع ناجحة من خلال توفير الموارد والدعم اللازم
             </p>
-          </div>
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">روابط سريعة</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  الرئيسية
+            <div className="flex gap-4">
+              {socialLinks.map((social) => (
+                <Link
+                  key={social.label}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-2 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                >
+                  <social.icon className="h-5 w-5" />
+                  <span className="sr-only">{social.label}</span>
                 </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  من نحن
-                </Link>
-              </li>
-              <li>
-                <Link href="/news" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  الأخبار
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  تواصل معنا
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">الدعم</h3>
-            <ul className="space-y-2 text-sm">
-              <li>
-                <Link href="/privacy" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  سياسة الخصوصية
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  شروط الاستخدام
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  الأسئلة الشائعة
-                </Link>
-              </li>
-              <li>
-                <Link href="/help" className="hover:text-[#18A39E] text-muted-foreground transition">
-                  المساعدة
-                </Link>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <h3 className="mb-4 text-xl font-semibold text-[#18A39E]">تابعنا</h3>
-            <div className="flex gap-4 justify-start mb-4">
-              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
-                <Facebook className="h-6 w-6" />
-                <span className="sr-only">Facebook</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
-                <Twitter className="h-6 w-6" />
-                <span className="sr-only">Twitter</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
-                <Instagram className="h-6 w-6" />
-                <span className="sr-only">Instagram</span>
-              </Link>
-              <Link href="#" className="text-muted-foreground hover:text-[#18A39E] transition">
-                <Linkedin className="h-6 w-6" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
+              ))}
             </div>
-            <div className="text-sm text-muted-foreground space-y-1">
-              <p>جامعة زيان عاشور، الجلفة، الجزائر</p>
-              <p>البريد: <a href="mailto:incubator@univ-djelfa.dz" className="hover:text-[#18A39E] transition">incubator@univ-djelfa.dz</a></p>
+          </div>
+
+          {/* Footer Links */}
+          {footerLinks.map((section) => (
+            <div key={section.title} className="space-y-6">
+              <h3 className="font-semibold text-lg text-right">{section.title}</h3>
+              <ul className="space-y-4">
+                {section.links.map((link) => (
+                  <li key={link.label} className="text-right">
+                    <Link
+                      href={link.href}
+                      className="text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
+          ))}
+        </div>
+
+        {/* Newsletter */}
+        <div className="mt-12 pt-12 border-t">
+          <div className="grid gap-8 lg:grid-cols-2 items-center">
+            <div className="text-right">
+              <h3 className="text-2xl font-semibold mb-2">اشترك في النشرة البريدية</h3>
+              <p className="text-muted-foreground">
+                احصل على آخر الأخبار والتحديثات مباشرة في بريدك الإلكتروني
+              </p>
+            </div>
+            <form className="flex gap-4">
+              <Button type="submit">
+                <Mail className="ml-2 h-4 w-4" />
+                اشتراك
+              </Button>
+              <div className="flex-1">
+                <Input
+                  type="email"
+                  placeholder="أدخل بريدك الإلكتروني"
+                  className="bg-background text-right"
+                />
+              </div>
+            </form>
           </div>
         </div>
-        <div className="border-t pt-8 text-center text-sm text-muted-foreground">
+
+        {/* Copyright */}
+        <div className="mt-12 pt-8 border-t text-center text-muted-foreground">
           <p>
             © {new Date().getFullYear()} حاضنة جامعة زيان عاشور. جميع الحقوق محفوظة.
           </p>
